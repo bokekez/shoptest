@@ -9,14 +9,15 @@ import { ItemContext } from './Components/Context';
 
 function App() {
   const [itemId, setItemId] = useState(0);
+  const [items, setItems] = useState([]);
   return(
     <Router basename={process.env.PUBLIC_URL}>
     <div>
-      <ItemContext.Provider value={{itemId, setItemId}}>
+      <ItemContext.Provider value={{itemId, setItemId, items, setItems}}>
         <Header/>
         <Search/>
         <Route exact={true} path="/" render={() =>(
-          <Card itemId={itemId} setItemId={setItemId}/>
+          <Card />
         )}/>
         <Route exact={true} path="/item/:id" render={() =>(
           <Item/>

@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ItemContext } from './Context'
 
 const Card = () => {
-    const [items, setItems] = useState([]);
-    const {itemId, setItemId} = useContext(ItemContext);
-
+    
+    const {itemId, setItemId, items, setItems} = useContext(ItemContext);
 
     useEffect(() => {
         fetch(`https://randomuser.me/api/?results=1000`)
