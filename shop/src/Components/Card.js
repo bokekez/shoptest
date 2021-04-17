@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { ItemContext } from './Context'
 
 const Card = () => {
     const [items, setItems] = useState([]);
+    const {itemId, setItemId} = useContext(ItemContext);
+
 
     useEffect(() => {
         fetch(`https://randomuser.me/api/?results=1000`)
@@ -39,16 +43,23 @@ const Card = () => {
 
     const componentRender = items.map(comp => {
         return(
-        <div>
+        <Link to={`/item/${comp.id}`} >
+        <div className='karticeChild' onClick={() => idPass(comp.id)} >
             <img src={comp.picture.large}/>
             <h3 >{comp.title}</h3>
             <h2 >{comp.first}</h2>
             <h2 >{comp.last}</h2>
         </div>
+        </Link>
         )
     })
+
+    const idPass = (id) =>{
+        setItemId(id);
+    }    
+
     return(
-        <div>
+        <div className='kartice'>
             {componentRender}
         </div>
     )
