@@ -124,9 +124,11 @@
   flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
-  /* align-content: center; */
-  margin-left: 92vh;
-  top: 3rem;
+  /* justify-items: center;
+  align-content: center;
+  align-items: center; */
+  margin: 0;
+  top: 4rem;
   position: fixed;
   background-color: rgba(187, 225, 238, 0.897);
   border: gray 0.5px solid;
