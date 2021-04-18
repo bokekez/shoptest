@@ -20,6 +20,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 7rem;
+  
 }
 
 .item{
@@ -96,6 +97,7 @@
   background-color: azure;
   position: absolute;
   margin-left: -2.4rem;
+  cursor: pointer;
 }
 
 .button2{
@@ -105,6 +107,7 @@
   background-color: azure;
   position: absolute;
   margin-left: -2.4rem;
+  cursor: pointer;
 }
 .button3{
   border-radius: 20px;
@@ -113,6 +116,36 @@
   background-color: azure;
   position: absolute;
   margin-left: -2.4rem;
+  cursor: pointer;
+}
+
+.searchList{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* align-content: center; */
+  margin-left: 45%;
+  top: 3rem;
+  position: fixed;
+  background-color: rgba(187, 225, 238, 0.897);
+  border: gray 0.5px solid;
+  width: 10rem;
+  text-decoration: none;
+  color: black;
+  list-style-type: none;
+  outline: 0;
+}
+
+.lista{
+  text-decoration: none;
+  color: black;
+  outline: 0;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
 }
 
 body{

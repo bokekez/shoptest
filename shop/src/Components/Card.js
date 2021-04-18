@@ -33,7 +33,7 @@ const Card = () => {
                                 
                 )
 
-            filteredItems.length = 15;
+            // filteredItems.length = 15;
 
             setItems([...items,...filteredItems]);
             
