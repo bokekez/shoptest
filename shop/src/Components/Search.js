@@ -18,8 +18,9 @@ const Search = () => {
             })
     
             setFilteredItems([...temp])
-            setFound(true);
-            
+            if(temp !== ''){
+                setFound(true);
+            }
         } 
         if (e.target.value.length <= 2){
             setFound(false)

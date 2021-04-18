@@ -16,7 +16,7 @@ const Login = () => {
                 <table>Password</table>
                 <input type='password'></input>
                 <Link to={`/register`}>
-                    <button>Register</button>
+                    <button className='buttonRegister'>Register</button>
                 </Link>
             </form>
         </div>

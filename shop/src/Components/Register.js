@@ -1,16 +1,55 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
 import { ItemContext } from './Context'
 
 const Register = () => {
+    const {user, setUser, loggedIn, setLoggedIn} = useContext(ItemContext);
+    const [tempEmail, setTempEmail] = useState('');
+    const [tempPassword, setTempPassword] = useState('');
+    const [tempUser, setTempUser] = useState('');
+    let history = useHistory();
+
+    const changeEmail = (e) => {
+        setTempEmail(e.target.value)
+        console.log(tempEmail)
+    }
+
+    const changePassword = (e) => {
+        setTempPassword(e.target.value)
+    }
+
+    const changeUser = (e) => {
+        setTempUser(e.target.value)
+    }    
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        const currentUser = {
+            name: tempUser,
+            email: tempEmail,
+            password: tempPassword
+        }
+        setUser(currentUser);
+        setTempEmail('');
+        setTempPassword('');
+        setTempUser('');
+        console.log('1');
+        history.push('/');
+        setLoggedIn(true)
+    }
+
+    console.log(user)
 
     return(
         <div className='login'>
-            <form className='loginForm'>
+            <form className='loginForm' onSubmit={handleSubmit}>
+                <table>Set username</table>
+                <input onChange={changeUser} value={tempUser}></input>
                 <table>Register an email</table>
-                <input type='email'></input>
+                <input type='email' onChange={changeEmail} value={tempEmail}></input>
                 <table>Set a password</table>
-                <input type='password'></input>
+                <input type='password' onChange={changePassword} value={tempPassword}></input>
+                <button className='buttonRegister' onClick={handleSubmit}>Create</button> 
             </form>
         </div>
     )
