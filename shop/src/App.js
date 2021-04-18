@@ -4,6 +4,7 @@ import Header from './Components/Header'
 import Search from './Components/Search'
 import Card from './Components/Card'
 import Item from './Components/Item'
+import Login from './Components/Login'
 import React, { useState, useEffect } from 'react';
 import { ItemContext } from './Components/Context';
 
@@ -21,6 +22,9 @@ function App() {
         )}/>
         <Route exact={true} path="/item/:id" render={() =>(
           <Item/>
+        )}/>
+        <Route exact={true} path="/login" render={() =>(
+          <Login/>
         )}/>
       </ItemContext.Provider>
     </div>

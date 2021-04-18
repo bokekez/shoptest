@@ -59,6 +59,13 @@
   outline: 0;
 }
 
+button:hover{
+  background-color: rgb(216, 216, 216);
+}
+
+li:hover{
+  color: rgb(182, 182, 182);
+}
 .buttonLink1{
   color: black;
   text-decoration: none;
@@ -132,7 +139,7 @@
   position: fixed;
   background-color: rgba(187, 225, 238, 0.897);
   border: gray 0.5px solid;
-  width: 10rem;
+  width: 20rem;
   text-decoration: none;
   color: black;
   list-style-type: none;

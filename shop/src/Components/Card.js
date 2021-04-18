@@ -43,7 +43,7 @@ const Card = () => {
     const componentRender = items.map(comp => {
         return(
         <Link to={`/item/${comp.id}`} >
-        <div className='karticeChild' onClick={() => idPass(comp.id)} >
+        <div className='karticeChild grow dib shadow-5' onClick={() => idPass(comp.id)} >
             <img src={comp.picture.large}/>
             <h3 >{comp.title}</h3>
             <h2 >{comp.first}</h2>

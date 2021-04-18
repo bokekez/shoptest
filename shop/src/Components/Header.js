@@ -8,7 +8,7 @@ const Header = () => {
             <Link to={`/`} className='buttonLink1' >
                 <button className='button1'>Home</button>
             </Link>
-            <Link to={`/`} className='buttonLink2' >
+            <Link to={`/login`} className='buttonLink2' >
                 <button className='button2'>Login</button>
             </Link>
             <Link to={`/`} className='buttonLink3' >

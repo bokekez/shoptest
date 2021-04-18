@@ -11,24 +11,19 @@ const Search = () => {
     const handleChange = (e) => {
         setSearchField(e.target.value);
         e.preventDefault();
-        if(searchField.length >= 2){
+        
+        if(e.target.value.length >= 2){
             const temp = items.filter(item => {
-                return item.first.toLowerCase().includes(searchField.toLowerCase())      
+                return item.first.toLowerCase().includes(e.target.value.toLowerCase())      
             })
-
-            // const temp = items.filter(item => {
-            //     return item.first.indexOf(searchField) !== -1;     
-            //     }    
-            // )
-
-            console.log(temp)
-
+    
             setFilteredItems([...temp])
-
-            if(filteredItems !== ''){
-                setFound(true)
-            }
+            setFound(true);
+            
         } 
+        if (e.target.value.length <= 2){
+            setFound(false)
+        }
     }
 
     console.log(searchField)
@@ -69,12 +64,12 @@ const Search = () => {
                 <input className='inputSearch' type='text' placeholder='Search items' value={searchField} onChange={handleChange} ></input>
             </form>
             </div>
-            :
+            : 
             <div className='search'>
             <form onSubmit={searchItems}>
                 <input className='inputSearch' type='text' placeholder='Search items' value={searchField} onChange={handleChange} ></input>       
             </form>  
-            <ul className='searchList'>
+            <ul className='searchList '>
             {
                 filteredItems.map(item => 
                     <Link to={`/item/${item.id}`} onClick={() => idPass(item.id)}>
@@ -83,7 +78,7 @@ const Search = () => {
                 )
             }
             </ul> 
-            </div>   
+            </div>
             }
         </div>
     )
