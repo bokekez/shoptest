@@ -12,7 +12,7 @@ function App() {
   const [items, setItems] = useState([]);
   return(
     <Router basename={process.env.PUBLIC_URL}>
-    <div>
+    <div >
       <ItemContext.Provider value={{itemId, setItemId, items, setItems}}>
         <Header/>
         <Search/>

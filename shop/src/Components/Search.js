@@ -70,12 +70,10 @@ const Search = () => {
             </form>
             </div>
             :
-            <>
             <div className='search'>
             <form onSubmit={searchItems}>
                 <input className='inputSearch' type='text' placeholder='Search items' value={searchField} onChange={handleChange} ></input>       
             </form>  
-            </div>     
             <ul className='searchList'>
             {
                 filteredItems.map(item => 
@@ -85,7 +83,7 @@ const Search = () => {
                 )
             }
             </ul> 
-            </>
+            </div>   
             }
         </div>
     )
