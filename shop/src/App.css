@@ -125,7 +125,7 @@
   /* justify-content: center; */
   /* align-items: center; */
   /* align-content: center; */
-  margin-left: 45%;
+  margin-left: 92vh;
   top: 3rem;
   position: fixed;
   background-color: rgba(187, 225, 238, 0.897);
@@ -143,7 +143,7 @@
   outline: 0;
 }
 
-a:hover, a:visited, a:link, a:active
+a:visited, a:link, a:active
 {
     text-decoration: none;
 }
