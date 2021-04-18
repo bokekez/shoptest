@@ -2,25 +2,19 @@ import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ItemContext } from './Context'
 
-const Login = () => {
-
-    // const handleSubmit = (e) => {
-    //     console.log(e)
-    // }
+const Register = () => {
 
     return(
         <div className='login'>
             <form className='loginForm'>
-                <table>Email</table>
+                <table>Register an email</table>
                 <input type='email'></input>
-                <table>Password</table>
+                <table>Set a password</table>
                 <input type='password'></input>
-                <Link to={`/register`}>
-                    <button>Register</button>
-                </Link>
             </form>
         </div>
     )
+
 }
 
-export default Login;
+export default Register;

@@ -23,6 +23,17 @@
   
 }
 
+.login{
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.loginForm{
+  display: flex;
+  flex-direction: column;
+}
+
 .item{
   display: flex;
   justify-content: center;
@@ -61,10 +72,12 @@
 
 button:hover{
   background-color: rgb(216, 216, 216);
+  transition: 0.5s;
 }
 
 li:hover{
   color: rgb(182, 182, 182);
+  transition: 0.5s;
 }
 .buttonLink1{
   color: black;
