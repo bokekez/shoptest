@@ -37,7 +37,7 @@ function App() {
         <Route exact={true} path="/checkout" render={() =>(
           <Checkout/>
         )}/>
-        <Route exact={true} path="/checkout" render={() =>(
+        <Route exact={true} path="/profile" render={() =>(
           <Profile/>
         )}/>
       </ItemContext.Provider>
