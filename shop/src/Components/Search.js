@@ -6,7 +6,9 @@ const Search = () => {
     const {itemId, setItemId, items, setItems} = useContext(ItemContext);
     // const selectedItem = items.filter(item => (item.name === itemId))
     const [searchField, setSearchField] = useState('')
-    const [filteredItems, setFilteredItems] = useState({})
+    const [filteredItems, setFilteredItems] = useState({
+        first: ''
+    })
     const [found, setFound] = useState(false)
     const handleChange = (e) => {
         setSearchField(e.target.value);
@@ -16,11 +18,12 @@ const Search = () => {
             const temp = items.filter(item => {
                 return item.first.toLowerCase().includes(e.target.value.toLowerCase())      
             })
-    
-            setFilteredItems([...temp])
-            if(temp !== ''){
-                setFound(true);
+            console.log('2', temp)
+            if(temp.length != 0){
+                setFilteredItems([...temp])
+                setFound(true)
             }
+
         } 
         if (e.target.value.length <= 2){
             setFound(false)
@@ -31,17 +34,10 @@ const Search = () => {
 
     const searchItems = (e) =>{
         e.preventDefault();
+
         const temp = items.filter(item => {
             return item.first.toLowerCase().includes(searchField.toLowerCase())      
         })
-
-        // const temp = items.filter(item => {
-        //     return item.first.indexOf(searchField) !== -1;     
-        //     }    
-        // )
-
-        console.log(temp)
-
         setFilteredItems([...temp])
         setSearchField('')      
 
@@ -71,7 +67,7 @@ const Search = () => {
                 <input className='inputSearch' type='text' placeholder='Search items' value={searchField} onChange={handleChange} ></input>       
             </form>  
             <ul className='searchList '>
-            {
+            {    
                 filteredItems.map(item => 
                     <Link to={`/item/${item.id}`} onClick={() => idPass(item.id)}>
                         <li className='lista'>{item.first}</li>
