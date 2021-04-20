@@ -4,7 +4,7 @@ import { ItemContext } from './Context'
 const Profile = () => {
     const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId} = useContext(ItemContext);
     const [tempItem, setTempItem] = useState('');
-    const [tempPrice, setTempPrice] = useState('');
+    const [tempPrice, setTempPrice] = useState();
 
     const changeItem = (e) => {
         e.preventDefault();
@@ -19,15 +19,18 @@ const Profile = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        setGenerateId(generateId + 1) 
-        const temp = {
-            id: generateId,
-            item: tempItem,
-            price: tempPrice
+        if(tempItem !== ''){
+            setGenerateId(generateId + 1) 
+            const temp = {
+                id: generateId,
+                item: tempItem,
+                price: tempPrice
+            }
+            
+            setItems([...items, temp])
+            setTempItem('');
+            setTempPrice('');
         }
-        setItems([...items, temp])
-        setTempItem('');
-        setTempPrice('');
         
     }
 
