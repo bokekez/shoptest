@@ -1,0 +1,11 @@
+.karticeChild{
+    margin-left: 3rem;
+}
+
+.kartice{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 7rem;
+  }
+  

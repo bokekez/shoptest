@@ -10,23 +10,32 @@ import Checkout from './Components/Checkout'
 import Profile from './Components/Profile'
 import React, { useState, useEffect } from 'react';
 import { ItemContext } from './Components/Context';
+import Katalog from './Components/Katalog';
 
 function App() {
   const [itemId, setItemId] = useState(0);
   const [items, setItems] = useState([]);
+  const [item, setItem] = useState([]);
   const [user, setUser] = useState({});
+  const [generateId, setGenerateId] = useState(0);
   const [loggedIn, setLoggedIn] = useState(false)
   return(
     <Router basename={process.env.PUBLIC_URL}>
     <div >
-      <ItemContext.Provider value={{itemId, setItemId, items, setItems, user, setUser, loggedIn, setLoggedIn}}>
+      <ItemContext.Provider value={{itemId, setItemId, items, setItems, user, setUser, loggedIn, setLoggedIn, item, setItem, generateId, setGenerateId}}>
         <Header/>
         <Search/>
-        <Route exact={true} path="/" render={() =>(
+        {/* <Route exact={true} path="/" render={() =>(
           <Card />
+        )}/> */}
+        <Route exact={true} path="/" render={() =>(
+          <Katalog />
         )}/>
         <Route exact={true} path="/item/:id" render={() =>(
           <Item/>
+        )}/>
+        <Route exact={true} path="/item/:id" render={() =>(
+          <Katalog />
         )}/>
         <Route exact={true} path="/login" render={() =>(
           <Login/>
@@ -40,6 +49,7 @@ function App() {
         <Route exact={true} path="/profile" render={() =>(
           <Profile/>
         )}/>
+        
       </ItemContext.Provider>
     </div>
     </Router>

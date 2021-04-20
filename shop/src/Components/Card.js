@@ -4,7 +4,7 @@ import { ItemContext } from './Context'
 
 const Card = () => {
     
-    const {itemId, setItemId, items, setItems} = useContext(ItemContext);
+    const {itemId, setItemId, items, setItems, item, setItem} = useContext(ItemContext);
 
     useEffect(() => {
         fetch(`https://randomuser.me/api/?results=1000`)

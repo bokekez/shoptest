@@ -2,10 +2,47 @@ import React, {useState, useEffect, useContext} from 'react';
 import { ItemContext } from './Context'
 
 const Profile = () => {
-    const {itemId, setItemId, items, setItems} = useContext(ItemContext);
+    const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId} = useContext(ItemContext);
+    const [tempItem, setTempItem] = useState('');
+    const [tempPrice, setTempPrice] = useState('');
+    const [tempStore, setTempStore] = useState({});
+
+    const changeItem = (e) => {
+        e.preventDefault();
+        setTempItem(e.target.value)
+        console.log(tempItem)
+    }
+
+    const changePrice = (e) => {
+        e.preventDefault();
+        setTempPrice(e.target.value)
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setGenerateId(generateId + 1)
+        const temp = {
+            id: generateId,
+            item: tempItem,
+            price: tempPrice
+        }
+        setTempStore(temp);
+        setTempItem('');
+        setTempPrice('');
+        setItems([...items, tempStore])
+        console.log(items);
+    }
+
+
     return(
-        <div className='item'>
-            
+        <div className='login'>
+            <form className='loginForm' onSubmit={handleSubmit}>
+                <label>List an item</label>
+                <input onChange={changeItem} value={tempItem}></input>
+                <label>Set a price</label>
+                <input onChange={changePrice} value={tempPrice}></input>
+                <button className='buttonRegister' onClick={handleSubmit}>Create</button> 
+            </form>
         </div>
     )
 
