@@ -18,8 +18,8 @@ const Katalog = () => {
         return(
         <Link className='karticeChild' to={`/item/${comp.id}`} >
         <div onClick={() => idPass(comp.id)} >
-            <h3 className='karta'>{comp.item}</h3>
-            <h2 className='karta'>{comp.price}</h2>
+            <p className='karta'>{comp.item}</p>
+            <p className='karta'>{comp.price}</p>
         </div>
         </Link>
         )
