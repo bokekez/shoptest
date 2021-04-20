@@ -16,8 +16,8 @@ const Katalog = () => {
     }    
     const componentRender = items.map(comp => {
         return(
-        <Link to={`/item/${comp.id}`} >
-        <div className='karticeChild' onClick={() => idPass(comp.id)} >
+        <Link className='karticeChild' to={`/item/${comp.id}`} >
+        <div onClick={() => idPass(comp.id)} >
             <h3 >{comp.item}</h3>
             <h2 >{comp.price}</h2>
         </div>

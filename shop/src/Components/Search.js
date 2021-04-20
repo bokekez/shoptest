@@ -7,7 +7,7 @@ const Search = () => {
     // const selectedItem = items.filter(item => (item.name === itemId))
     const [searchField, setSearchField] = useState('')
     const [filteredItems, setFilteredItems] = useState({
-        first: ''
+        item: ''
     })
     const [found, setFound] = useState(false)
     let history = useHistory();
@@ -17,15 +17,15 @@ const Search = () => {
         e.preventDefault();
         
         if(e.target.value.length >= 2){
-            const temp = items.filter(item => {
-                return item.first.toLowerCase().includes(e.target.value.toLowerCase())      
+            const temp = items.filter(member => {
+                return member.item.toLowerCase().includes(e.target.value.toLowerCase())      
             })
             console.log('2', temp)
             if(temp.length != 0){
                 setFilteredItems([...temp])
                 setFound(true)
             }
-
+            console.log(items.item)
         } 
         if (e.target.value.length <= 2){
             setFound(false)
@@ -33,12 +33,13 @@ const Search = () => {
     }
 
     console.log(searchField)
+    console.log(items.item)
 
     const searchItems = (e) =>{
         e.preventDefault();
 
-        const temp = items.filter(item => {
-            return item.first.toLowerCase().includes(searchField.toLowerCase())      
+        const temp = items.filter(member => {
+            return member.item.toLowerCase().includes(searchField.toLowerCase())      
         })
         setFilteredItems([...temp])
         setSearchField('')      
@@ -78,7 +79,7 @@ const Search = () => {
             {    
                 filteredItems.map(item => 
                     <Link to={`/item/${item.id}`} onClick={() => idPass(item.id)}>
-                        <li className='lista'>{item.first}</li>
+                        <li className='lista'>{item.item}</li>
                     </Link>
                 )
             }

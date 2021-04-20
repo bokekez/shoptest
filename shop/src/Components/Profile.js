@@ -5,7 +5,6 @@ const Profile = () => {
     const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId} = useContext(ItemContext);
     const [tempItem, setTempItem] = useState('');
     const [tempPrice, setTempPrice] = useState('');
-    const [tempStore, setTempStore] = useState({});
 
     const changeItem = (e) => {
         e.preventDefault();
@@ -20,20 +19,19 @@ const Profile = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        setGenerateId(generateId + 1)
+        setGenerateId(generateId + 1) 
         const temp = {
             id: generateId,
             item: tempItem,
             price: tempPrice
         }
-        setTempStore(temp);
+        setItems([...items, temp])
         setTempItem('');
         setTempPrice('');
-        setItems([...items, tempStore])
-        console.log(items);
+        
     }
 
-
+    console.log('add',items);
     return(
         <div className='login'>
             <form className='loginForm' onSubmit={handleSubmit}>

@@ -1,11 +1,21 @@
 .karticeChild{
     margin-left: 3rem;
+    text-align: center;
+    border: rgb(148, 193, 204) 0.5px solid;
+    width: 10rem;
+    margin-top: 1rem;
+    padding: 0;
+    text-decoration: none;
 }
 
 .kartice{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    border-top: gray 1px solid;
     margin-top: 7rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
   }
-  
+ 
