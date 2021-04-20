@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ItemContext } from './Context'
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, HashRouter } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, HashRouter, useHistory } from "react-router-dom";
 
 const Search = () => {
     const {itemId, setItemId, items, setItems} = useContext(ItemContext);
@@ -10,6 +10,8 @@ const Search = () => {
         first: ''
     })
     const [found, setFound] = useState(false)
+    let history = useHistory();
+
     const handleChange = (e) => {
         setSearchField(e.target.value);
         e.preventDefault();
@@ -43,6 +45,12 @@ const Search = () => {
 
         if(filteredItems !== ''){
             setFound(true)
+        }
+        if(filteredItems.length === 1){
+            setItemId(filteredItems[0].id);
+            setSearchField('');
+            setFound(false);
+            history.push(`/item/${filteredItems[0].id}`);
         }
     }
 

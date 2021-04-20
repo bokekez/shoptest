@@ -3,12 +3,9 @@ import { ItemContext } from './Context'
 
 const Profile = () => {
     const {itemId, setItemId, items, setItems} = useContext(ItemContext);
-    const selectedItem = items.filter(item => (item.id === itemId))
     return(
         <div className='item'>
-            <h1>
-               {selectedItem[0].first}
-            </h1>
+            
         </div>
     )
 
