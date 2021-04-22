@@ -6,6 +6,38 @@
   margin-top: 0.5rem;
 }
 
+.profilList{
+  border-radius: 3px;
+  border-width: 0;
+  border: rgb(158, 158, 158) 1px solid;
+  width: 5rem;
+  background-color: rgba(240, 255, 255, 0.719);
+  position: absolute;
+  margin-top: 2rem;
+  margin-left: -2.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(106, 106, 233);
+  z-index: 9999;
+  overflow: visible;
+}
+
+.profilList1{
+    border-radius: 3px;
+    border-width: 0;
+    border: rgb(158, 158, 158) 1px solid;
+    width: 5rem;
+    background-color: rgba(240, 255, 255, 0.719);
+    position: absolute;
+    margin-top: 4.2rem;
+    margin-left: -2.4rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(106, 106, 233);
+    z-index: 9999;
+    overflow: visible;
+  }
+
 .profilBotun{
   border-radius: 20px;
   border-width: 0;
@@ -16,4 +48,9 @@
   cursor: pointer;
   font-weight: bold;
   color: blue;
+}
+
+.arrow{
+    margin-left: 0.9rem;
+    height: 0.7rem;
 }

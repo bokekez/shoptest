@@ -19,12 +19,13 @@
 .kartice{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     border-top: gray 1px solid;
     margin-top: 7rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
+    margin-left: 15%;
+    margin-right: 15%;
     text-decoration: none;
 }
 

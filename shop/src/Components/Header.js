@@ -1,17 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
 import { ItemContext } from './Context';
 import './Header.css'
+import arrow from './Arrow.svg'
 
 const Header = () => {
     const {user, setUser, loggedIn, setLoggedIn} = useContext(ItemContext);
     const [listOn, setListOn] = useState(false);
+    let history = useHistory();
+
     const lista = () => {
         setListOn(true);
+        if(listOn === true){
+            setListOn(false);
+        }
     }
-    const listaOff = () => {
+
+    const listaCreate = () => {
         setListOn(false);
+        history.push(`/profile`);
     }
+
 
     return(
         <h1 className='navbar'>
@@ -23,14 +32,20 @@ const Header = () => {
                 <button className='button2'>Login</button>
             </Link>
             : listOn === false ?
-            <Link to={`/profile`} className='profilLink' onMouseEnter={lista} onClick={listaOff} >
-                <button className='profilBotun'>{user.name}</button> 
+            <Link className='profilLink' onClick={lista} >
+                <button className='profilBotun'>
+                    {user.name}
+                    <img src={arrow} className='arrow'></img>
+                </button> 
             </Link>
             :
-            <Link to={`/profile`} className='profilLink' onClick={listaOff}>
-                <button className='profilBotun'>{user.name}</button>
-                <button onMouseLeave={listaOff}>Create listing</button>
-                <button onMouseLeave={listaOff}>My listings</button>
+            <Link className='profilLink' onClick={lista}>
+                <button className='profilBotun'>
+                    {user.name}
+                    <img src={arrow} className='arrow'></img>
+                </button>
+                <button  className='profilList' onClick={listaCreate}>Create listing</button>
+                <button  className='profilList1' onClick={lista}>My listings</button>
             </Link>
             }      
             <Link to={`/checkout`} className='buttonLink3' >
