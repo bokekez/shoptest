@@ -1,0 +1,19 @@
+.profilLink{
+  text-decoration: none;
+  margin-left: auto;
+  height: 1.1rem;
+  width: 5rem;
+  margin-top: 0.5rem;
+}
+
+.profilBotun{
+  border-radius: 20px;
+  border-width: 0;
+  width: 5rem;
+  background-color: azure;
+  position: absolute;
+  margin-left: -2.4rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: blue;
+}
