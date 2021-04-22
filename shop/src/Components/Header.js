@@ -21,6 +21,11 @@ const Header = () => {
         history.push(`/profile`);
     }
 
+    const listaListing = () => {
+        setListOn(false);
+        history.push(`/listings`);
+    }
+
 
     return(
         <h1 className='navbar'>
@@ -45,7 +50,7 @@ const Header = () => {
                     <img src={arrow} className='arrow'></img>
                 </button>
                 <button  className='profilList' onClick={listaCreate}>Create listing</button>
-                <button  className='profilList1' onClick={lista}>My listings</button>
+                <button  className='profilList1' onClick={listaListing}>My listings</button>
             </Link>
             }      
             <Link to={`/checkout`} className='buttonLink3' >
