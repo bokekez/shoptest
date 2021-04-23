@@ -8,9 +8,25 @@ const Katalog = () => {
     const {itemId, setItemId, items, setItems, item, setItem} = useContext(ItemContext);
 
     useEffect(() => {
-
+        fetch('http://localhost:3000/', {
+            method: 'get',
+            headers: {'Content-Type': 'application/json'},
+        }).then(response => response.json())
+          .then(response => {
+            console.log(response);    
+            const tempItems = response.map(member => ({
+                'id': member.id,
+                'item': member.item,
+                'price': member.price,
+                'sales': member.sales
+            }));
+            if(items.length === 0){
+                setItems([...items, ...tempItems]);
+            }
+            })
+        
+    }, [])
     
-    })
     const idPass = (id) =>{
         setItemId(id);
     }    
