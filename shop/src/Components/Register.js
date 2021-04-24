@@ -46,10 +46,10 @@ const Register = () => {
 			})
 		}).then(resopnse => resopnse.json())
 		.then(user =>{
-			if (user){
+			if (user.username !== ''){
 				history.push('/');
                 setLoggedIn(true);
-                setUser(user.id);
+                setUser(user);
                 setTempEmail('');
                 setTempPassword('');
                 setTempUser('');
