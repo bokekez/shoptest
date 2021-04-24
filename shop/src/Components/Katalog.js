@@ -26,8 +26,11 @@ const Katalog = () => {
             })
         
     }, [])
+<<<<<<< HEAD
         
     
+=======
+>>>>>>> 86d44171b1a4733e717b65f1047174bc54f206e5
     
     const idPass = (id) =>{
         setItemId(id);
