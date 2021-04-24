@@ -24,21 +24,40 @@ const Register = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        const currentUser = {
-            name: tempUser,
-            email: tempEmail,
-            password: tempPassword
-        }
-        setUser(currentUser);
-        setTempEmail('');
-        setTempPassword('');
-        setTempUser('');
-        console.log('1');
-        history.push('/');
-        setLoggedIn(true)
+        // const currentUser = {
+        //     name: tempUser,
+        //     email: tempEmail,
+        //     password: tempPassword
+        // }
+        // setUser(currentUser);
+        // setTempEmail('');
+        // setTempPassword('');
+        // setTempUser('');
+        // console.log('1');
+        // history.push('/');
+        // setLoggedIn(true)
+        fetch('http://localhost:3000/register', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				email: tempEmail,
+				password: tempPassword,
+				username: tempUser
+			})
+		}).then(resopnse => resopnse.json())
+		.then(user =>{
+			if (user){
+				history.push('/');
+                setLoggedIn(true);
+                setUser(user.id);
+                setTempEmail('');
+                setTempPassword('');
+                setTempUser('');
+			}
+		})
     }
 
-    console.log(user)
+    console.log(' mm',user)
 
     return(
         <div className='login'>

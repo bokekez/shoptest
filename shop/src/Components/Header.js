@@ -26,6 +26,11 @@ const Header = () => {
         history.push(`/listings`);
     }
 
+    const logOut = () => {
+        setUser('')
+        setLoggedIn(false)
+        history.push(`/`);
+    }
 
     return(
         <h1 className='navbar'>
@@ -39,18 +44,19 @@ const Header = () => {
             : listOn === false ?
             <Link className='profilLink' onClick={lista} >
                 <button className='profilBotun'>
-                    {user.name}
+                    {user.username}
                     <img src={arrow} className='arrow'></img>
                 </button> 
             </Link>
             :
             <Link className='profilLink' onClick={lista}>
                 <button className='profilBotun'>
-                    {user.name}
+                    {user.username}
                     <img src={arrow} className='arrow'></img>
                 </button>
                 <button  className='profilList' onClick={listaCreate}>Create listing</button>
                 <button  className='profilList1' onClick={listaListing}>My listings</button>
+                <button  className='profilList1' onClick={logOut}>Logout</button>
             </Link>
             }      
             <Link to={`/checkout`} className='buttonLink3' >
