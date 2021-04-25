@@ -33,7 +33,7 @@ const Profile = () => {
         //     setTempPrice('');
         // }
         if(tempItem !== ''){
-            fetch('http://localhost:3000/profile', {
+            fetch('https://shoptest-42.herokuapp.com/profile', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({

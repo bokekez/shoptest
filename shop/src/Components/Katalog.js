@@ -8,7 +8,7 @@ const Katalog = () => {
     const {itemId, setItemId, items, setItems, item, setItem} = useContext(ItemContext);
 
     useEffect(() => {
-        fetch('http://localhost:3000/', {
+        fetch('https://shoptest-42.herokuapp.com/', {
             method: 'get',
             headers: {'Content-Type': 'application/json'},
         }).then(response => response.json())

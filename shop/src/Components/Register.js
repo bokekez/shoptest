@@ -36,7 +36,7 @@ const Register = () => {
         // console.log('1');
         // history.push('/');
         // setLoggedIn(true)
-        fetch('http://localhost:3000/register', {
+        fetch('https://shoptest-42.herokuapp.com/register', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({

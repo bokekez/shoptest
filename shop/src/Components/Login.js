@@ -19,7 +19,7 @@ const Login = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        fetch('http://localhost:3000/login', {
+        fetch('https://shoptest-42.herokuapp.com/login', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
