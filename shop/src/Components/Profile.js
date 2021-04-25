@@ -1,3 +1,4 @@
+import { getByDisplayValue } from '@testing-library/dom';
 import React, {useState, useEffect, useContext} from 'react';
 import { ItemContext } from './Context'
 
@@ -19,19 +20,36 @@ const Profile = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(tempItem !== ''){
-            setGenerateId(generateId + 1) 
-            const temp = {
-                id: generateId,
-                item: tempItem,
-                price: tempPrice
-            }
+        // if(tempItem !== ''){
+        //     setGenerateId(generateId + 1) 
+        //     const temp = {
+        //         id: generateId,
+        //         item: tempItem,
+        //         price: tempPrice
+        //     }
             
-            setItems([...items, temp])
-            setTempItem('');
-            setTempPrice('');
-        }
+        //     setItems([...items, temp])
+        //     setTempItem('');
+        //     setTempPrice('');
+        // }
+        if(tempItem !== ''){
+            fetch('http://localhost:3000/profile', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				item: tempItem,
+                price: tempPrice
+			})
+		})
+        .then(resopnse => resopnse.json())
+		.then(article =>{
+		if (article){
+                 setTempItem('');
+                 setTempPrice('')
+			}
+	    })
         
+        }    
     }
 
     console.log('add',items);

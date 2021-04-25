@@ -46,13 +46,13 @@ const Register = () => {
 			})
 		}).then(resopnse => resopnse.json())
 		.then(user =>{
-			if (user.username !== ''){
-				history.push('/');
+			if (user.username !== ''){		
                 setLoggedIn(true);
                 setUser(user);
                 setTempEmail('');
                 setTempPassword('');
                 setTempUser('');
+                history.push('/');
 			}
 		})
     }
