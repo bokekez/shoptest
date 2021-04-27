@@ -13,6 +13,9 @@ const Item = () => {
             <h3>
                {selectedItem[0].price}
             </h3>
+            <h3>
+               {selectedItem[0].username}
+            </h3>
         </div>
     )
 

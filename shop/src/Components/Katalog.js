@@ -5,7 +5,7 @@ import './Katalog.css'
 
 const Katalog = () => {
     
-    const {itemId, setItemId, items, setItems, item, setItem} = useContext(ItemContext);
+    const {itemId, setItemId, items, setItems, item, setItem, user, setUser} = useContext(ItemContext);
 
     useEffect(() => {
         fetch('https://shoptest-42.herokuapp.com/', {
@@ -19,7 +19,7 @@ const Katalog = () => {
                 'item': member.item,
                 'price': member.price,
                 'sales': member.sales,
-                'username': member.user
+                'username': member.username
             }));
             setItems([...items, ...tempItems]);
             
@@ -36,7 +36,7 @@ const Katalog = () => {
         <div onClick={() => idPass(comp.id)} >
             <p className='karta'>{comp.item}</p>
             <p className='karta'>{comp.price}</p>
-            <p className='karta'>{comp.username}</p>
+            <p className='kartUser'>{comp.username}</p>
         </div>
         </Link>
         )

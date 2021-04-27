@@ -18,6 +18,7 @@ const Profile = () => {
         setTempPrice(e.target.value)
     }
     
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // if(tempItem !== ''){
@@ -32,6 +33,8 @@ const Profile = () => {
         //     setTempItem('');
         //     setTempPrice('');
         // }
+        const tempName = user.username;
+
         if(tempItem !== ''){
             fetch('https://shoptest-42.herokuapp.com/profile', {
 			method: 'post',
@@ -39,7 +42,7 @@ const Profile = () => {
 			body: JSON.stringify({
 				item: tempItem,
                 price: tempPrice,
-                user: user
+                username: tempName
 			})
 		})
         .then(resopnse => resopnse.json())
@@ -53,6 +56,7 @@ const Profile = () => {
         }    
     }
 
+    console.log('ad', user)
     console.log('add',items);
     return(
         <div className='login'>

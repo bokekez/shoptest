@@ -31,5 +31,12 @@
 
 .karta{
     text-decoration: none;
+    margin-top: 1rem;
+}
+
+.kartUser{
+    text-decoration: none;
+    margin-top: 3rem;
+    border-top: rgb(214, 213, 213) 1px solid;
 }
  
