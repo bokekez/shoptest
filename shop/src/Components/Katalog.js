@@ -20,9 +20,8 @@ const Katalog = () => {
                 'price': member.price,
                 'sales': member.sales
             }));
-            if(items.length === 0){
-                setItems([...items, ...tempItems]);
-            }
+            setItems([...items, ...tempItems]);
+            
             })
         
     }, [])
