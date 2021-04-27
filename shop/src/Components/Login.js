@@ -10,7 +10,6 @@ const Login = () => {
 
     const changeEmail = (e) => {
         setTempEmail(e.target.value)
-        console.log(tempEmail)
     }
 
     const changePassword = (e) => {
@@ -42,13 +41,12 @@ const Login = () => {
         history.push('/register');
     }
 
-    console.log(user)
     return(
         <div className='login'>
             <form className='loginForm' onSubmit={handleSubmit}>
-                <table>email</table>
+                <label>email</label>
                 <input type='email' onChange={changeEmail} value={tempEmail}></input>
-                <table>password</table>
+                <label>password</label>
                 <input type='password' onChange={changePassword} value={tempPassword}></input>
                 <button className='buttonRegister' onClick={handleSubmit}>Login</button>
                 <button className='buttonRegister' onClick={register}>Register</button>

@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, HashRouter, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, HashRouter, useHistory, useParams } from "react-router-dom";
 import Header from './Components/Header'
 import Search from './Components/Search'
 import Card from './Components/Card'
@@ -19,11 +19,12 @@ function App() {
   const [item, setItem] = useState([]);
   const [user, setUser] = useState({});
   const [generateId, setGenerateId] = useState(0);
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   return(
     <Router basename={process.env.PUBLIC_URL}>
     <div >
-      <ItemContext.Provider value={{itemId, setItemId, items, setItems, user, setUser, loggedIn, setLoggedIn, item, setItem, generateId, setGenerateId}}>
+      <ItemContext.Provider value={{itemId, setItemId, items, setItems, user, setUser, loggedIn, setLoggedIn, item, setItem, generateId, setGenerateId, loaded, setLoaded}}>
         <Header/>
         <Search/>
         {/* <Route exact={true} path="/" render={() =>(

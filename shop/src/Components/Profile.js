@@ -3,14 +3,13 @@ import React, {useState, useEffect, useContext} from 'react';
 import { ItemContext } from './Context'
 
 const Profile = () => {
-    const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId, user, setUser} = useContext(ItemContext);
+    const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId, user, setUser, loggedIn} = useContext(ItemContext);
     const [tempItem, setTempItem] = useState('');
     const [tempPrice, setTempPrice] = useState();
 
     const changeItem = (e) => {
         e.preventDefault();
         setTempItem(e.target.value)
-        console.log(tempItem)
     }
 
     const changePrice = (e) => {
@@ -56,10 +55,9 @@ const Profile = () => {
         }    
     }
 
-    console.log('ad', user)
-    console.log('add',items);
     return(
         <div className='login'>
+            { loggedIn === true ?
             <form className='loginForm' onSubmit={handleSubmit}>
                 <label>List an item</label>
                 <input onChange={changeItem} value={tempItem}></input>
@@ -67,6 +65,9 @@ const Profile = () => {
                 <input onChange={changePrice} value={tempPrice}></input>
                 <button className='buttonRegister' onClick={handleSubmit}>Create</button> 
             </form>
+            :
+            <h2>Log in to create listings</h2>
+            }          
         </div>
     )
 

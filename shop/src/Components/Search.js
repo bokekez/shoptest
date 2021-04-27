@@ -20,20 +20,15 @@ const Search = () => {
             const temp = items.filter(member => {
                 return member.item.toLowerCase().includes(e.target.value.toLowerCase())      
             })
-            console.log('2', temp)
             if(temp.length != 0){
                 setFilteredItems([...temp])
                 setFound(true)
             }
-            console.log(items.item)
         } 
         if (e.target.value.length <= 2){
             setFound(false)
         }
     }
-
-    console.log(searchField)
-    console.log(items.item)
 
     const searchItems = (e) =>{
         e.preventDefault();

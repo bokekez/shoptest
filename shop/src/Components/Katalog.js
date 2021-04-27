@@ -5,7 +5,7 @@ import './Katalog.css'
 
 const Katalog = () => {
     
-    const {itemId, setItemId, items, setItems, item, setItem, user, setUser} = useContext(ItemContext);
+    const {itemId, setItemId, items, setItems, item, setItem, user, setUser, loaded, setLoaded} = useContext(ItemContext);
 
     useEffect(() => {
         fetch('https://shoptest-42.herokuapp.com/', {
@@ -22,9 +22,8 @@ const Katalog = () => {
                 'username': member.username
             }));
             setItems([...items, ...tempItems]);
-            
+            // setLoaded(true);
             })
-        
     }, [])
     
     const idPass = (id) =>{

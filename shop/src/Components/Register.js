@@ -11,7 +11,6 @@ const Register = () => {
 
     const changeEmail = (e) => {
         setTempEmail(e.target.value)
-        console.log(tempEmail)
     }
 
     const changePassword = (e) => {
@@ -48,7 +47,9 @@ const Register = () => {
 		.then(user =>{
 			if (user.username !== ''){		
                 setLoggedIn(true);
-                setUser(user);
+                setUser({
+                    username: user
+                });
                 setTempEmail('');
                 setTempPassword('');
                 setTempUser('');
@@ -62,11 +63,11 @@ const Register = () => {
     return(
         <div className='login'>
             <form className='loginForm' onSubmit={handleSubmit}>
-                <table>Set username</table>
+                <label>Set username</label>
                 <input onChange={changeUser} value={tempUser}></input>
-                <table>Register an email</table>
+                <label>Register an email</label>
                 <input type='email' onChange={changeEmail} value={tempEmail}></input>
-                <table>Set a password</table>
+                <label>Set a password</label>
                 <input type='password' onChange={changePassword} value={tempPassword}></input>
                 <button className='buttonRegister' onClick={handleSubmit}>Create</button> 
             </form>
