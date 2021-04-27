@@ -18,7 +18,8 @@ const Katalog = () => {
                 'id': member.id,
                 'item': member.item,
                 'price': member.price,
-                'sales': member.sales
+                'sales': member.sales,
+                'username': member.user
             }));
             setItems([...items, ...tempItems]);
             
@@ -35,6 +36,7 @@ const Katalog = () => {
         <div onClick={() => idPass(comp.id)} >
             <p className='karta'>{comp.item}</p>
             <p className='karta'>{comp.price}</p>
+            <p className='karta'>{comp.username}</p>
         </div>
         </Link>
         )

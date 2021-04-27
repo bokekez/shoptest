@@ -3,7 +3,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import { ItemContext } from './Context'
 
 const Profile = () => {
-    const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId} = useContext(ItemContext);
+    const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId, user, setUser} = useContext(ItemContext);
     const [tempItem, setTempItem] = useState('');
     const [tempPrice, setTempPrice] = useState();
 
@@ -38,7 +38,8 @@ const Profile = () => {
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
 				item: tempItem,
-                price: tempPrice
+                price: tempPrice,
+                user: user
 			})
 		})
         .then(resopnse => resopnse.json())
