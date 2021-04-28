@@ -4,7 +4,8 @@ import { ItemContext } from './Context'
 
 const Listing = () => {
     const {itemId, setItemId, items, setItems, user, setUser} = useContext(ItemContext);
-    const selectedItem = items.filter(item => (item.username == user));
+    const selectedItem = items.filter(item => (item.username == user.username));
+    console.log(user)
     console.log(items)
     console.log(selectedItem)
     const componentRender = selectedItem.map(comp => {
