@@ -8,6 +8,7 @@ const Katalog = () => {
     const {itemId, setItemId, items, setItems, item, setItem, user, setUser, loaded, setLoaded} = useContext(ItemContext);
 
     useEffect(() => {
+        if(loaded === false){
         fetch('https://shoptest-42.herokuapp.com/', {
             method: 'get',
             headers: {'Content-Type': 'application/json'},
@@ -18,14 +19,17 @@ const Katalog = () => {
                 'id': member.id,
                 'item': member.item,
                 'price': member.price,
-                'sales': member.sales,
-                'username': member.username
+                'username': member.username,
+                'sales': member.sales
             }));
             setItems([...items, ...tempItems]);
-            // setLoaded(true);
+            setLoaded(true);
             })
+        }
     }, [])
     
+    console.log('items', items)
+
     const idPass = (id) =>{
         setItemId(id);
     }    

@@ -2,7 +2,7 @@
   text-decoration: none;
   margin-left: auto;
   height: 1.1rem;
-  width: 5rem;
+  width: 8rem;
   margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
   border-radius: 3px;
   border-width: 0;
   border: rgb(158, 158, 158) 1px solid;
-  width: 5rem;
+  width: 8rem;
   background-color: rgba(240, 255, 255, 0.719);
   /* position: absolute; */
   margin-top: 1.5rem;
@@ -29,7 +29,7 @@
     border-radius: 3px;
     border-width: 0;
     border: rgb(158, 158, 158) 1px solid;
-    width: 5rem;
+    width: 8rem;
     background-color: rgba(240, 255, 255, 0.719);
     /* position: absolute; */
     margin-left: -2.4rem;
@@ -43,16 +43,19 @@
 .profilBotun{
   border-radius: 20px;
   border-width: 0;
-  width: 5rem;
+  width: 8rem;
   background-color: azure;
   position: absolute;
   margin-left: -2.4rem;
   cursor: pointer;
   font-weight: bold;
   color: rgb(106, 106, 243);
+  text-align: center;
 }
 
 .arrow{
-    margin-left: 0.9rem;
+    position: absolute;
+    margin-left: 0.6rem;
     height: 0.7rem;
+    top:0.2rem;
 }

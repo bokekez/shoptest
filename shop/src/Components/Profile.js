@@ -3,7 +3,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import { ItemContext } from './Context'
 
 const Profile = () => {
-    const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId, user, setUser, loggedIn} = useContext(ItemContext);
+    const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId, user, setUser, loggedIn, loaded, setLoaded} = useContext(ItemContext);
     const [tempItem, setTempItem] = useState('');
     const [tempPrice, setTempPrice] = useState();
 
@@ -33,7 +33,7 @@ const Profile = () => {
         //     setTempPrice('');
         // }
         const tempName = user.username;
-
+        console.log('12', tempName)
         if(tempItem !== ''){
             fetch('https://shoptest-42.herokuapp.com/profile', {
 			method: 'post',
@@ -41,14 +41,17 @@ const Profile = () => {
 			body: JSON.stringify({
 				item: tempItem,
                 price: tempPrice,
-                username: tempName
+                username: tempName,
+                sales: 0
 			})
 		})
         .then(resopnse => resopnse.json())
 		.then(article =>{
 		if (article){
                  setTempItem('');
-                 setTempPrice('')
+                 setTempPrice('');
+                 setItems([]);
+                 setLoaded(false);
 			}
 	    })
         

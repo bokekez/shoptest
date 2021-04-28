@@ -3,16 +3,24 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ItemContext } from './Context'
 
 const Listing = () => {
-    const {itemId, setItemId, items, setItems} = useContext(ItemContext);
-    const selectedItem = items.filter(item => (item.id === itemId))
+    const {itemId, setItemId, items, setItems, user, setUser} = useContext(ItemContext);
+    const selectedItem = items.filter(item => (item.username == user));
+    console.log(items)
+    console.log(selectedItem)
+    const componentRender = selectedItem.map(comp => {
+        return(
+        <Link className='karticeChild' to={`/item/${comp.id}`} >
+        <div >
+            <p className='karta'>{comp.item}</p>
+            <p className='karta'>{comp.price}</p>
+            <p className='kartUser'>{comp.username}</p>
+        </div>
+        </Link>
+        )
+    })
     return(
         <div className='item'>
-            <h3>
-               {selectedItem.item}
-            </h3>
-            <h3>
-               {selectedItem.price}
-            </h3>
+            {componentRender}
         </div>
     )
 }
