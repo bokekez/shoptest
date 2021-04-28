@@ -7,7 +7,9 @@ const Register = () => {
     const [tempEmail, setTempEmail] = useState('');
     const [tempPassword, setTempPassword] = useState('');
     const [tempUser, setTempUser] = useState('');
+    const [userError, setuserError] = useState(false);
     let history = useHistory();
+    // let userError = false;
 
     const changeEmail = (e) => {
         setTempEmail(e.target.value)
@@ -18,7 +20,13 @@ const Register = () => {
     }
 
     const changeUser = (e) => {
-        setTempUser(e.target.value)
+        if(e.target.value.length == 10){
+            setuserError(true)
+            setTempUser(e.target.value)
+        }
+        else if(e.target.value.length <= 9){
+            setTempUser(e.target.value)
+        }    
     }    
 
     const handleSubmit = (e) =>{
@@ -58,12 +66,23 @@ const Register = () => {
 		})
     }
 
-    console.log(' mm',user)
+    // const userWarning = (error) =>{
+    //     return true
+    // }
+    console.log(tempUser)
+    console.log(' 12', userError)
 
     return(
         <div className='login'>
             <form className='loginForm' onSubmit={handleSubmit}>
+                {userError === true ?
+                <>
                 <label>Set username</label>
+                <p>Maximum 10 characters</p>
+                </>
+                : 
+                <label>Set username</label>
+                }
                 <input onChange={changeUser} value={tempUser}></input>
                 <label>Register an email</label>
                 <input type='email' onChange={changeEmail} value={tempEmail}></input>
