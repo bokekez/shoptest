@@ -26,7 +26,7 @@ const Katalog = () => {
             setLoaded(true);
             })
         }
-    }, [])
+    }, [loaded])
     
     console.log('items', items)
 

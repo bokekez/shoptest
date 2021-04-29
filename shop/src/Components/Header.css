@@ -10,7 +10,7 @@
 }
 
 .profilList{
-  border-radius: 3px;
+  border-radius: 2px; 
   border-width: 0;
   border: rgb(158, 158, 158) 1px solid;
   width: 8rem;
@@ -26,7 +26,7 @@
 }
 
 .profilList1{
-    border-radius: 3px;
+    border-radius: 2px; 
     border-width: 0;
     border: rgb(158, 158, 158) 1px solid;
     width: 8rem;
@@ -41,21 +41,59 @@
   }
 
 .profilBotun{
-  border-radius: 20px;
+  border-radius: 2px; 
   border-width: 0;
   width: 8rem;
   background-color: azure;
   position: absolute;
-  margin-left: -2.4rem;
+  /* margin-left: -2.4rem; */
   cursor: pointer;
   font-weight: bold;
   color: rgb(106, 106, 243);
-  text-align: center;
+  text-align: inherit;
+  
 }
 
 .arrow{
-    position: absolute;
-    margin-left: 0.6rem;
+    position:absolute;
+    /* margin-left: 7vh; */
     height: 0.7rem;
     top:0.2rem;
+}
+
+.button1{
+  border-radius: 2px;
+  border-width: 0;
+  width: 5rem;
+  background-color: azure;
+  position: absolute;
+  margin-left: -2.4rem;
+  cursor: pointer;
+}
+
+.button2{
+  border-radius: 2px;
+  border-width: 0;
+  width: 5rem;
+  background-color: azure;
+  position: absolute;
+  margin-left: -2.4rem;
+  cursor: pointer;
+}
+.button3{
+  border-radius: 2px;
+  border-width: 0;
+  width: 5rem;
+  background-color: azure;
+  position: absolute;
+  margin-left: -2.4rem;
+  cursor: pointer;
+}
+
+.buttonRegister{
+  margin-top: 1rem;
+  border-radius: 2px;
+  border-width: 0;
+  width: 5rem;
+  background-color: azure;
 }
