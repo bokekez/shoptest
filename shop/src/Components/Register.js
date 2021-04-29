@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
 import { ItemContext } from './Context'
+import './Register.css'
 
 const Register = () => {
     const {user, setUser, loggedIn, setLoggedIn} = useContext(ItemContext);
@@ -25,6 +26,7 @@ const Register = () => {
             setTempUser(e.target.value)
         }
         else if(e.target.value.length <= 9){
+            setuserError(false)
             setTempUser(e.target.value)
         }    
     }    
@@ -77,8 +79,8 @@ const Register = () => {
             <form className='loginForm' onSubmit={handleSubmit}>
                 {userError === true ?
                 <>
-                <label>Set username</label>
-                <p>Maximum 10 characters</p>
+                {/* <label>Set username</label> */}
+                <label className='warning'>Maximum 10 characters</label>
                 </>
                 : 
                 <label>Set username</label>
