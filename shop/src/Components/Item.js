@@ -53,9 +53,10 @@ const Item = () => {
                 <h3>
                 {selectedItem[0].username}
                 </h3>
+                <button className='buttonAdd'>Add</button>
             </div>
             :
-                <h3>loading</h3>
+            <h3>loading</h3>
             }
         </div>
     )

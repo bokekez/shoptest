@@ -6,3 +6,11 @@
     margin-top: 7rem;
     margin-bottom: 10rem;
   }
+
+.buttonAdd{
+    border-radius: 2px;
+    border-width: 0;
+    width: 5rem;
+    background-color: rgba(191, 233, 250, 0.815);
+    cursor: pointer;
+}
