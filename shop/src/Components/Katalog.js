@@ -45,11 +45,17 @@ const Katalog = () => {
         )
     })
     return(
+        <div>
+        {loaded === true ?
         <div className='kartice'>
             {componentRender}
         </div>
-        )
-    
-    
+        :
+        <div className='kartice'>
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+        } 
+        </div>    
+        )  
 }
 export default Katalog;
