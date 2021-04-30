@@ -4,7 +4,7 @@ import { ItemContext } from './Context'
 import './Item.css'
 
 const Item = () => {
-    const {itemId, setItemId, items, setItems} = useContext(ItemContext);
+    const {cart, setCart, itemId, setItemId, items, setItems} = useContext(ItemContext);
     let history = useHistory();
 
     //let { id } = useParams();
@@ -40,6 +40,10 @@ const Item = () => {
     // console.log(selectedItem)
     // console.log('1', idComp)
 
+    const add = () =>{
+        setCart([...cart, ...selectedItem])
+    }
+
     return(
         <div>
             {itemId !== 0 ?
@@ -53,7 +57,7 @@ const Item = () => {
                 <h3>
                 {selectedItem[0].username}
                 </h3>
-                <button className='buttonAdd'>Add</button>
+                <button className='buttonAdd' onClick={add}>Add</button>
             </div>
             :
             <h3>loading</h3>
