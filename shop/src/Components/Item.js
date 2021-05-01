@@ -4,7 +4,7 @@ import { ItemContext } from './Context'
 import './Item.css'
 
 const Item = () => {
-    const {cart, setCart, itemId, setItemId, items, setItems} = useContext(ItemContext);
+    const {total, setTotal, cart, setCart, itemId, setItemId, items, setItems} = useContext(ItemContext);
     let history = useHistory();
 
     //let { id } = useParams();
@@ -42,7 +42,12 @@ const Item = () => {
 
     const add = () =>{
         setCart([...cart, ...selectedItem])
+        let tempPrice = total + selectedItem[0].price;
+        setTotal(tempPrice)
     }
+
+    console.log(selectedItem[0].price)
+    console.log(total);
 
     return(
         <div>

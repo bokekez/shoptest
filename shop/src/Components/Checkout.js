@@ -4,7 +4,7 @@ import { ItemContext } from './Context'
 import './Checkout.css'
 
 const Checkout = () => {
-    const {cart, setCart, itemId, setItemId, items, setItems} = useContext(ItemContext);
+    const {total, setTotal, cart, setCart, itemId, setItemId, items, setItems} = useContext(ItemContext);
 
     const componentRender = cart.map(comp => {
         return(
@@ -17,16 +17,16 @@ const Checkout = () => {
     })
 
 
-    const total = () => {
-        const totalArray = cart.map(comp =>
-            comp.price
-        )
-        console.log('1', totalArray)
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        return (
-            totalArray.reduce(reducer)
-        )    
-    }
+    // const total = () => {
+    //     const totalArray = cart.map(comp =>
+    //         comp.price
+    //     )
+    //     console.log('1', totalArray)
+    //     const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    //     return (
+    //         totalArray.reduce(reducer)
+    //     )    
+    // }
 
     return(
         <div className='checkout'>

@@ -89,5 +89,15 @@
   position: absolute;
   margin-left: -2.4rem;
   cursor: pointer;
+  font-weight: bold;
+  color: rgb(106, 106, 243);
+  padding-left: 2rem;
 }
 
+.cart{
+  position: absolute;
+  /* margin-left: 7vh; */
+  height: 0.9rem;
+  top:0.1rem;
+  left: 0.5rem;
+}

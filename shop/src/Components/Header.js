@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-
 import { ItemContext } from './Context';
 import './Header.css'
 import arrow from './Arrow.svg'
+import cart from './cart.png'
 
 const Header = () => {
-    const {user, setUser, loggedIn, setLoggedIn} = useContext(ItemContext);
+    const {total, setTotal, user, setUser, loggedIn, setLoggedIn} = useContext(ItemContext);
     const [listOn, setListOn] = useState(false);
     let history = useHistory();
 
@@ -60,7 +61,10 @@ const Header = () => {
             </Link>
             }      
             <Link to={`/checkout`} className='buttonLink3' >
-                <button className='button3'>Checkout</button>
+                <button className='button3'>
+                    <img src={cart} className='cart'></img>
+                    {total}
+                </button>
             </Link>
         </h1>
     )
