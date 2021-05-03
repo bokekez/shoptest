@@ -9,8 +9,13 @@ const Register = () => {
     const [tempPassword, setTempPassword] = useState('');
     const [tempUser, setTempUser] = useState('');
     const [userError, setuserError] = useState(false);
+    const [emailErr, setEmailErr] = useState(false);
+    const [pwErr, setPwErr] = useState(false);
+    
     let history = useHistory();
     // let userError = false;
+    const validEmail = RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
+    const validPassword = RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
 
     const changeEmail = (e) => {
         setTempEmail(e.target.value)
@@ -45,28 +50,40 @@ const Register = () => {
         // console.log('1');
         // history.push('/');
         // setLoggedIn(true)
-        fetch('https://shoptest-42.herokuapp.com/register', {
-			method: 'post',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				email: tempEmail,
-				password: tempPassword,
-				username: tempUser
-			})
-		}).then(resopnse => resopnse.json())
-		.then(user =>{
-			if (user.username !== ''){		
-                setLoggedIn(true);
-                setUser({
-                    username: user
-                });
-                setTempEmail('');
-                setTempPassword('');
-                setTempUser('');
-                history.push('/');
-			}
-		})
+        validate();
+        if(emailErr === false && pwErr === false){
+            fetch('https://shoptest-42.herokuapp.com/register', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    email: tempEmail,
+                    password: tempPassword,
+                    username: tempUser
+                })
+            }).then(resopnse => resopnse.json())
+            .then(user =>{
+                if (user.username !== ''){		
+                    setLoggedIn(true);
+                    setUser({
+                        username: user
+                    });
+                    setTempEmail('');
+                    setTempPassword('');
+                    setTempUser('');
+                    history.push('/');
+                }
+            })
+        }
     }
+
+    const validate = () => {
+        if (!validEmail.test(tempUser)) {
+           setEmailErr(true);
+        }
+        if (!validPassword.test(tempPassword)) {
+           setPwErr(true);
+        }
+    };
 
     // const userWarning = (error) =>{
     //     return true

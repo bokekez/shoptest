@@ -6,6 +6,7 @@ const Profile = () => {
     const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId, user, setUser, loggedIn, loaded, setLoaded} = useContext(ItemContext);
     const [tempItem, setTempItem] = useState('');
     const [tempPrice, setTempPrice] = useState();
+    
 
     const changeItem = (e) => {
         e.preventDefault();
@@ -32,31 +33,38 @@ const Profile = () => {
         //     setTempItem('');
         //     setTempPrice('');
         // }
-        const tempName = user.username;
-        console.log('12', tempName)
-        if(tempItem !== ''){
-            fetch('https://shoptest-42.herokuapp.com/profile', {
-			method: 'post',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				item: tempItem,
-                price: tempPrice,
-                username: tempName,
-                sales: 0
-			})
-		})
-        .then(resopnse => resopnse.json())
-		.then(article =>{
-		if (article){
-                 setTempItem('');
-                 setTempPrice('');
-                 setItems([]);
-                 setLoaded(false);
-			}
-	    })
-        
+        // validate();
+        // if(validate){
+            const tempName = user.username;
+            if(tempItem !== ''){
+                fetch('https://shoptest-42.herokuapp.com/profile', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    item: tempItem,
+                    price: tempPrice,
+                    username: tempName,
+                    sales: 0
+                })
+            })
+            .then(resopnse => resopnse.json())
+            .then(article =>{
+            if (article){
+                    setTempItem('');
+                    setTempPrice('');
+                    setItems([]);
+                    setLoaded(false);
+                }
+            })
+        // }
         }    
     }
+
+    // const validate = () => {
+    //     if (!validEmail.test(email)) {
+    //        setEmailErr(true);
+    //     }
+    // };
 
     return(
         <div className='login'>
@@ -65,7 +73,7 @@ const Profile = () => {
                 <label>List an item</label>
                 <input onChange={changeItem} value={tempItem}></input>
                 <label>Set a price</label>
-                <input onChange={changePrice} value={tempPrice}></input>
+                <input onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
                 <button className='buttonRegister' onClick={handleSubmit}>Create</button> 
             </form>
             :
