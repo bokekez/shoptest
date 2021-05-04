@@ -2,15 +2,31 @@ import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ItemContext } from './Context'
 import './Checkout.css'
+import trash from './trash.png'
 
 const Checkout = () => {
     const {total, setTotal, cart, setCart, itemId, setItemId, items, setItems} = useContext(ItemContext);
 
+    // let tempId = 0;
+    // cart.forEach((temp, i) => {
+    //     temp.cartId = i + 1;
+    // })
+
+    console.log(cart)
+
+    const deleteItem = (cartId) =>{
+        const listDelete = cart.filter(item => item.cartId !== cartId)
+        setCart(listDelete)
+        const deduce = cart.filter(item => item.cartId === cartId)
+        setTotal(total - deduce[0].price)
+    }
+
     const componentRender = cart.map(comp => {
         return(
-        <div className='karticeChild'>
-            <p className='karta'>{comp.item}</p>
-            <p className='karta'>{comp.price}</p>
+        <div className='karticaCheckout'>
+            <p className='kartaChk1'>{comp.item}</p>
+            <p className='kartaChk'>{comp.price}</p>
+            <img src={trash} className='trash' onClick={() => deleteItem(comp.cartId)}></img>
             <p className='kartUser'>{comp.username}</p>
         </div>
         )

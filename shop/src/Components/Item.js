@@ -46,9 +46,6 @@ const Item = () => {
         setTotal(tempPrice)
     }
 
-    console.log(selectedItem[0].price)
-    console.log(total);
-
     return(
         <div>
             {itemId !== 0 ?
