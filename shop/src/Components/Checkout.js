@@ -8,10 +8,12 @@ const Checkout = () => {
     const {total, setTotal, cart, setCart, itemId, setItemId, items, setItems} = useContext(ItemContext);
 
     // let tempId = 0;
-    cart.forEach((temp, i) => {
-        temp.cartId = i + 1;
-    })
+    // const tempCart = cart.forEach((temp, i) => {
+    //     temp.cartId = i + 1;
+    // })
 
+    // console.log('1', tempCart)
+    
     const deleteItem = (cartId) =>{
         const listDelete = cart.filter(item => item.cartId !== cartId)
         setCart(listDelete)
