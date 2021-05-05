@@ -13,8 +13,7 @@ const Katalog = () => {
             method: 'get',
             headers: {'Content-Type': 'application/json'},
         }).then(response => response.json())
-          .then(response => {
-            console.log(response);    
+          .then(response => {   
             const tempItems = response.map(member => ({
                 'id': member.id,
                 'item': member.item,
@@ -27,15 +26,13 @@ const Katalog = () => {
             })
         }
     }, [loaded])
-    
-    console.log('items', items)
 
     const idPass = (id) =>{
         setItemId(id);
     }    
     const componentRender = items.map(comp => {
         return(
-        <Link className='karticeChild' to={`/item/${comp.id}`} >
+        <Link key={comp.id} className='karticeChild' to={`/item/${comp.id}`} >
         <div onClick={() => idPass(comp.id)} >
             <p className='karta'>{comp.item}</p>
             <p className='karta'>{comp.price}</p>

@@ -8,20 +8,29 @@ const Checkout = () => {
     const {total, setTotal, cart, setCart, itemId, setItemId, items, setItems} = useContext(ItemContext);
 
     // let tempId = 0;
-    // const tempCart = cart.forEach((temp, i) => {
+    // cart.forEach((temp, i) => {
     //     temp.cartId = i + 1;
     // })
 
-    // console.log('1', tempCart)
-    
+    const tempCart = cart.map((member, i )=> ({
+        'id': member.id,
+        'item': member.item,
+        'price': member.price,
+        'username': member.username,
+        'sales': member.sales,
+        'cartId': i
+    }))
+
+    console.log(tempCart)
+
     const deleteItem = (cartId) =>{
-        const listDelete = cart.filter(item => item.cartId !== cartId)
+        const listDelete = tempCart.filter(item => item.cartId !== cartId)
         setCart(listDelete)
-        const deduce = cart.filter(item => item.cartId === cartId)
+        const deduce = tempCart.filter(item => item.cartId === cartId)
         setTotal(total - deduce[0].price)
     }
 
-    const componentRender = cart.map(comp => {
+    const componentRender = tempCart.map(comp => {
         return(
         <div className='karticaCheckout'>
             <p className='kartaChk1'>{comp.item}</p>
