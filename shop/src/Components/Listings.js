@@ -1,22 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ItemContext } from './Context'
+import edit from './edit.png'
 
 const Listing = () => {
     const {itemId, setItemId, items, setItems, user, setUser} = useContext(ItemContext);
     const selectedItem = items.filter(item => (item.username == user.username));
-    console.log(user)
-    console.log(items)
-    console.log(selectedItem)
+
+    const editItem = () =>{
+
+    }
+
     const componentRender = selectedItem.map(comp => {
         return(
-        <Link className='karticeChild' to={`/item/${comp.id}`} >
-        <div >
+        <div className='karticeChild'>
             <p className='karta'>{comp.item}</p>
             <p className='karta'>{comp.price}</p>
+            <img src={edit} className='trash' onClick={() => editItem(comp.cartId)}></img>
             <p className='kartUser'>{comp.username}</p>
         </div>
-        </Link>
         )
     })
     return(
