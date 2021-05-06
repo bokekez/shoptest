@@ -21,8 +21,6 @@ const Checkout = () => {
         'cartId': i
     }))
 
-    console.log(tempCart)
-
     const deleteItem = (cartId) =>{
         const listDelete = tempCart.filter(item => item.cartId !== cartId)
         setCart(listDelete)
@@ -32,7 +30,7 @@ const Checkout = () => {
 
     const componentRender = tempCart.map(comp => {
         return(
-        <div className='karticaCheckout'>
+        <div key={tempCart.cartId} className='karticaCheckout'>
             <p className='kartaChk1'>{comp.item}</p>
             <p className='kartaChk'>{comp.price}</p>
             <img src={trash} className='trash' onClick={() => deleteItem(comp.cartId)}></img>

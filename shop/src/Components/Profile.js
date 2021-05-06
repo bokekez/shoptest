@@ -6,6 +6,7 @@ const Profile = () => {
     const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId, user, setUser, loggedIn, loaded, setLoaded} = useContext(ItemContext);
     const [tempItem, setTempItem] = useState('');
     const [tempPrice, setTempPrice] = useState();
+    const [info, setInfo] = useState('');
     
 
     const changeItem = (e) => {
@@ -54,12 +55,14 @@ const Profile = () => {
                     setTempPrice('');
                     setItems([]);
                     setLoaded(false);
+                    setInfo(tempItem);
                 }
             })
         // }
         }    
     }
 
+    console.log(info)
     // const validate = () => {
     //     if (!validEmail.test(email)) {
     //        setEmailErr(true);
@@ -74,8 +77,14 @@ const Profile = () => {
                 <input onChange={changeItem} value={tempItem}></input>
                 <label>Set a price</label>
                 <input onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
-                <button className='buttonRegister' onClick={handleSubmit}>Create</button> 
+                <button className='buttonRegister' onClick={handleSubmit}>Create</button>
+                { info !== '' ?
+                <p>{info} has been created</p>
+                :
+                <></>
+                } 
             </form>
+            
             :
             <h2>Log in to create listings</h2>
             }          
