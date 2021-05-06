@@ -12,7 +12,8 @@ const Listing = () => {
     const [tempItem, setTempItem] = useState('');
     const [tempPrice, setTempPrice] = useState();
     const [edditState, setEdditState] = useState({id: 0});
-
+    const [message, setMessage] = useState('');
+ 
     const changeItem = (e) => {
         e.preventDefault();
         setTempItem(e.target.value)
@@ -38,11 +39,30 @@ const Listing = () => {
 
     const deleteItem = (id) =>{
         const selectedDelete = selectedItem.filter(item => item.id === id)
+
+        const tempId = selectedDelete[0].id;
+        fetch('https://shoptest-42.herokuapp.com/listings', {
+                method: 'delete',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    id: tempId
+                })
+            })
+            .then(resopnse => resopnse.json())
+            .then(article =>{
+            if (article){
+                    setLoaded(false);
+                    setEdditon(false);
+                    setItems([]);
+                    setMessage('Item deleted')
+                }
+            })
     }
 
     const handleSubmit = (e) =>{
         e.preventDefault();
         const tempName = user.username;
+        const tempId = edditState[0].id;
             if(tempItem !== ''){
                 fetch('https://shoptest-42.herokuapp.com/listings', {
                 method: 'put',
@@ -51,7 +71,8 @@ const Listing = () => {
                     item: tempItem,
                     price: tempPrice,
                     username: tempName,
-                    sales: 0
+                    sales: 0,
+                    id: tempId
                 })
             })
             .then(resopnse => resopnse.json())
@@ -59,11 +80,20 @@ const Listing = () => {
             if (article){
                     setTempItem('');
                     setTempPrice('');
-                    setItems([]);
                     setLoaded(false);
+                    setEdditon(false);
+                    setItems([]);
+                    setMessage('Item eddited')
                 }
+            else{
+                setMessage('Failed to edit item')
+            }
             })
         }    
+    }
+
+    const handleCancle = () =>{
+        setEdditon(false);
     }
 
     const componentRender = selectedItem.map(comp => {
@@ -73,25 +103,30 @@ const Listing = () => {
                 <form onSubmit={handleSubmit}>
                     <label>Edit item</label>
                     <input onChange={changeItem} value={tempItem}></input>
-                    <label>Edit price</label>
+                     <label>Edit price</label>
                     <input onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
+                    <div>
+                    <button className='buttonRegister' onClick={handleSubmit}>Update</button>
+                    <button className='buttonRegister' onClick={handleCancle}>Cancle</button>
+                    </div>
                 </form> 
             :
-            <div>
+           <div>
                 <p className='karta'>{comp.item}</p>
                 <p className='karta'>{comp.price}</p>
+                <div>
+                    <img src={edit} className='trash' onClick={() => editItem(comp.id)}></img>
+                    <img src={trash} className='trash' onClick={() => deleteItem(comp.id)}></img>
+                </div>
             </div>
             }
-            <div>
-                <img src={edit} className='trash' onClick={() => editItem(comp.id)}></img>
-                <img src={trash} className='trash' onClick={() => deleteItem(comp.id)}></img>
-            </div>
             <p className='kartUser'>{comp.username}</p>
         </div>
         )
     })
     return(
         <div className='item'>
+            {message}
             {componentRender}
         </div>
     )

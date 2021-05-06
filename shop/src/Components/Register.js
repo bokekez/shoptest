@@ -11,7 +11,8 @@ const Register = () => {
     const [userError, setuserError] = useState(false);
     const [emailErr, setEmailErr] = useState(false);
     const [pwErr, setPwErr] = useState(false);
-    
+    const [message, setMessage] = useState('');
+
     let history = useHistory();
     // let userError = false;
     const validEmail = RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
@@ -70,9 +71,14 @@ const Register = () => {
                     setTempEmail('');
                     setTempPassword('');
                     setTempUser('');
-                    history.push('/');
+                    setMessage('Register successful, redirecting')
+                    setTimeout(function(){ history.push('/'); }, 3000);     
                 }
+            else{
+                setMessage('unable to register')
+            }
             })
+            .catch(setMessage('unable to register'))
         }
     }
 
@@ -93,7 +99,9 @@ const Register = () => {
 
     return(
         <div className='login'>
+            
             <form className='loginForm' onSubmit={handleSubmit}>
+                {message}
                 {userError === true ?
                 <>
                 {/* <label>Set username</label> */}

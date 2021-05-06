@@ -6,6 +6,7 @@ const Login = () => {
     const {user, setUser, loggedIn, setLoggedIn} = useContext(ItemContext);
     const [tempEmail, setTempEmail] = useState('');
     const [tempPassword, setTempPassword] = useState('');
+    const [message, setMessage] = useState('');
     let history = useHistory();
 
     const changeEmail = (e) => {
@@ -35,6 +36,7 @@ const Login = () => {
                 setTempPassword('');
 			}
 		})
+        .catch(setMessage('Incorect username or password'))
     }
     
     const register = () => {
@@ -44,6 +46,7 @@ const Login = () => {
     return(
         <div className='login'>
             <form className='loginForm' onSubmit={handleSubmit}>
+                {message}
                 <label>email</label>
                 <input type='email' onChange={changeEmail} value={tempEmail}></input>
                 <label>password</label>
