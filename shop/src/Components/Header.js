@@ -63,7 +63,7 @@ const Header = () => {
             <Link to={`/checkout`} className='buttonLink3' >
                 <button className='button3'>
                     <img src={cart} className='cart'></img>
-                    {total}
+                    {Number(total).toFixed(2)}
                 </button>
             </Link>
         </h1>

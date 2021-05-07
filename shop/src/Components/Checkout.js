@@ -55,7 +55,7 @@ const Checkout = () => {
         <div className='checkout'>
             <div>
             <h2>Total:</h2>
-            <h3>{total}</h3>
+            <h3>{Number(total).toFixed(2)}</h3>
             {componentRender}
             </div>
         </div>

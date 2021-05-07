@@ -62,7 +62,6 @@ const Profile = () => {
         }    
     }
 
-    console.log(info)
     // const validate = () => {
     //     if (!validEmail.test(email)) {
     //        setEmailErr(true);
