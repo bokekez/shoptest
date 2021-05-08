@@ -98,25 +98,25 @@ const Listing = () => {
 
     const componentRender = selectedItem.map(comp => {
         return(
-        <div key={comp.id} className='karticeChild'>
+        <div key={comp.id} className='karticeChildList'>
             {edditon === true && comp.id === edditState[0].id ?
-                <form onSubmit={handleSubmit}>
-                    <label>Edit item</label>
+                <form onSubmit={handleSubmit} className='formaList'>
+                    <label className='listLabel'>edit item</label>
                     <input onChange={changeItem} value={tempItem}></input>
-                     <label>Edit price</label>
+                    <label className='listLabel'>edit price</label>
                     <input onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
                     <div>
-                    <button className='buttonRegister' onClick={handleSubmit}>Update</button>
-                    <button className='buttonRegister' onClick={handleCancle}>Cancle</button>
+                    <button className='buttonListing' onClick={handleSubmit}>Update</button>
+                    <button className='buttonListing' onClick={handleCancle}>Cancle</button>
                     </div>
                 </form> 
             :
            <div>
-                <p className='karta'>{comp.item}</p>
-                <p className='karta'>{comp.price}</p>
+                <p className='kartaList'>{comp.item}</p>
+                <p className='kartaList'>{comp.price}</p>
                 <div>
-                    <img src={edit} className='trash' onClick={() => editItem(comp.id)}></img>
-                    <img src={trash} className='trash' onClick={() => deleteItem(comp.id)}></img>
+                    <img src={edit} className='kartaIkone1' onClick={() => editItem(comp.id)}></img>
+                    <img src={trash} className='kartaIkone2' onClick={() => deleteItem(comp.id)}></img>
                 </div>
             </div>
             }
@@ -125,7 +125,7 @@ const Listing = () => {
         )
     })
     return(
-        <div className='item'>
+        <div className='karticeList'>
             {message}
             {componentRender}
         </div>

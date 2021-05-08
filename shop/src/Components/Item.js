@@ -43,7 +43,6 @@ const Item = () => {
     const add = () =>{
         setCart([...cart, ...selectedItem])
         let tempPrice = total + parseFloat(selectedItem[0].price);
-        parseFloat(tempPrice).toFixed(2);
         setTotal(tempPrice)
     }
 

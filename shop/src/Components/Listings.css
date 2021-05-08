@@ -1,0 +1,71 @@
+.karticeChildList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: center;
+    border: rgb(148, 193, 204) 0.5px solid;
+    background-color: rgba(191, 233, 250, 0.815);
+    width: 10rem;
+    height: 10rem;
+    margin-top: 2rem;
+    /* margin-bottom: 2rem; */
+    padding: 0;
+    text-decoration: none;
+}
+
+.karticeList{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    border-top: gray 1px solid;
+    margin-top: 7rem;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-decoration: none;
+}
+
+.kartaList{
+    /* margin-top: auto; */
+    text-decoration: none;
+    margin-top: 1rem;
+    /* padding: 0.5rem; */
+    /* border-bottom: rgb(214, 213, 213) 1px solid; */
+}
+
+.kartaIkone2{
+    margin-left: 0.5rem;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    align-self: center;
+  }
+
+.kartaIkone1{
+    margin-right: 0.5rem;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    align-self: center;
+}
+
+.formaList{
+    margin-top: 1rem;
+}
+
+.listLabel{
+    font-size: 0.8rem;
+}
+
+.buttonListing{
+    margin-top: 1rem;
+    border-radius: 2px;
+    border-width: 0;
+    width: 4rem;
+    background-color: rgb(146, 184, 233);
+    border: gray 0.5px solid;
+  }
