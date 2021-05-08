@@ -7,7 +7,11 @@ const Profile = () => {
     const [tempItem, setTempItem] = useState('');
     const [tempPrice, setTempPrice] = useState();
     const [info, setInfo] = useState('');
-    
+    const [decErr, setDecErr] = useState(false);
+    let countDecimals = function (value) {
+        if(Math.floor(value) === value) return 0;
+        return value.toString().split(".")[1].length || 0;
+    }
 
     const changeItem = (e) => {
         e.preventDefault();
@@ -16,9 +20,17 @@ const Profile = () => {
 
     const changePrice = (e) => {
         e.preventDefault();
-        setTempPrice(e.target.value)
+        if(!e.target.value.toString().split("").includes("."))
+        {
+            setTempPrice(e.target.value)
+        }
+        if(e.target.value.toString().split("").includes(".") && countDecimals(e.target.value) < 3)
+        {
+            setTempPrice(e.target.value)
+        }
     }
     
+    console.log(decErr)
 
     const handleSubmit = (e) => {
         e.preventDefault();
