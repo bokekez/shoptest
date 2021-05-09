@@ -62,10 +62,17 @@
 }
 
 .buttonListing{
-    margin-top: 1rem;
+    /* margin-top: 0.4rem; */
+    /* margin: 0.4rem 1rem; */
+    margin: 0.2rem 0.4rem;
     border-radius: 2px;
     border-width: 0;
     width: 4rem;
     background-color: rgb(146, 184, 233);
     border: gray 0.5px solid;
   }
+
+.listInput{
+    width: 85%;
+    
+}

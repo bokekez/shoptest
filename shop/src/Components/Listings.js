@@ -13,6 +13,11 @@ const Listing = () => {
     const [tempPrice, setTempPrice] = useState();
     const [edditState, setEdditState] = useState({id: 0});
     const [message, setMessage] = useState('');
+    let countDecimals = function (value) {
+        if(Math.floor(value) === value) return 0;
+        return value.toString().split(".")[1].length || 0;
+    }
+
  
     const changeItem = (e) => {
         e.preventDefault();
@@ -21,7 +26,14 @@ const Listing = () => {
 
     const changePrice = (e) => {
         e.preventDefault();
-        setTempPrice(e.target.value)
+        if(!e.target.value.toString().split("").includes("."))
+        {
+            setTempPrice(e.target.value)
+        }
+        if(e.target.value.toString().split("").includes(".") && countDecimals(e.target.value) < 3)
+        {
+            setTempPrice(e.target.value)
+        }
     }
     
 
@@ -102,9 +114,9 @@ const Listing = () => {
             {edditon === true && comp.id === edditState[0].id ?
                 <form onSubmit={handleSubmit} className='formaList'>
                     <label className='listLabel'>edit item</label>
-                    <input onChange={changeItem} value={tempItem}></input>
+                    <input className='listInput'onChange={changeItem} value={tempItem}></input>
                     <label className='listLabel'>edit price</label>
-                    <input onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
+                    <input className='listInput'onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
                     <div>
                     <button className='buttonListing' onClick={handleSubmit}>Update</button>
                     <button className='buttonListing' onClick={handleCancle}>Cancle</button>
