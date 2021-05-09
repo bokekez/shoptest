@@ -109,6 +109,8 @@ const Listing = () => {
 
     const handleCancle = () =>{
         setEdditon(false);
+        setTempItem('');
+        setTempPrice('');
     }
 
     const componentRender = selectedItem.map(comp => {
@@ -117,9 +119,9 @@ const Listing = () => {
             {edditon === true && comp.id === edditState[0].id ?
                 <form onSubmit={handleSubmit} className='formaList'>
                     <label className='listLabel'>edit item</label>
-                    <input className='listInput'onChange={changeItem} value={tempItem}></input>
+                    <input className='listInput'onChange={changeItem} value={tempItem} placeholder={edditState[0].item}></input>
                     <label className='listLabel'>edit price</label>
-                    <input className='listInput'onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
+                    <input className='listInput'onChange={changePrice} value={tempPrice} placeholder={edditState[0].price}></input>
                     <div>
                     <button className='buttonListing' onClick={handleSubmit}>Update</button>
                     <button className='buttonListing' onClick={handleCancle}>Cancle</button>
