@@ -20,13 +20,17 @@ const Profile = () => {
 
     const changePrice = (e) => {
         e.preventDefault();
-        if(!e.target.value.toString().split("").includes("."))
-        {
-            setTempPrice(e.target.value)
-        }
-        if(e.target.value.toString().split("").includes(".") && countDecimals(e.target.value) < 3)
-        {
-            setTempPrice(e.target.value)
+        e.preventDefault();
+        const re = /^[0-9.\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            if(!e.target.value.toString().split("").includes("."))
+            {
+                setTempPrice(e.target.value)
+            }
+            if(e.target.value.toString().split("").includes(".") && countDecimals(e.target.value) < 3)
+            {
+                setTempPrice(e.target.value)
+            }
         }
     }
     

@@ -26,13 +26,16 @@ const Listing = () => {
 
     const changePrice = (e) => {
         e.preventDefault();
-        if(!e.target.value.toString().split("").includes("."))
-        {
-            setTempPrice(e.target.value)
-        }
-        if(e.target.value.toString().split("").includes(".") && countDecimals(e.target.value) < 3)
-        {
-            setTempPrice(e.target.value)
+        const re = /^[0-9.\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            if(!e.target.value.toString().split("").includes("."))
+            {
+                setTempPrice(e.target.value)
+            }
+            if(e.target.value.toString().split("").includes(".") && countDecimals(e.target.value) < 3)
+            {
+                setTempPrice(e.target.value)
+            }
         }
     }
     
@@ -128,6 +131,7 @@ const Listing = () => {
                 <p className='kartaList'>{comp.price}</p>
                 <div>
                     <img src={edit} className='kartaIkone1' onClick={() => editItem(comp.id)}></img>
+                    {/* <img src={trash} className='kartaIkone2' onClick={() => deleteItem(comp.id)}></img> */}
                     <img src={trash} className='kartaIkone2' onClick={() => deleteItem(comp.id)}></img>
                 </div>
             </div>
@@ -138,7 +142,7 @@ const Listing = () => {
     })
     return(
         <div className='karticeList'>
-            {message}
+            <p>{message}</p>
             {componentRender}
         </div>
     )

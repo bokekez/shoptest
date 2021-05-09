@@ -74,9 +74,9 @@ const Register = () => {
                     setMessage('Register successful, redirecting')
                     setTimeout(function(){ history.push('/'); }, 3000);     
                 }
-            else{
-                setMessage('unable to register')
-            }
+            // else{
+            //     setMessage('unable to register')
+            // }
             })
             .catch(setMessage('unable to register'))
         }
@@ -101,7 +101,7 @@ const Register = () => {
         <div className='login'>
             
             <form className='loginForm' onSubmit={handleSubmit}>
-                {message}
+                <p className='warning'>{message}</p>
                 {userError === true ?
                 <>
                 {/* <label>Set username</label> */}
