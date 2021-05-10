@@ -19,7 +19,7 @@ const Register = () => {
     const validPassword = RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
 
     const changeEmail = (e) => {
-        setTempEmail(e.target.value)
+         setTempEmail(e.target.value)
     }
 
     const changePassword = (e) => {
@@ -51,8 +51,8 @@ const Register = () => {
         // console.log('1');
         // history.push('/');
         // setLoggedIn(true)
-        validate();
-        if(emailErr === false && pwErr === false){
+        // validate();
+        if (validEmail.test(tempEmail) && validPassword.test(tempPassword)) {
             fetch('https://shoptest-42.herokuapp.com/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
@@ -79,17 +79,25 @@ const Register = () => {
             // }
             })
             .catch(setMessage('unable to register'))
+        } else if(!validEmail.test(tempEmail)){
+            setEmailErr(true);
+            setMessage('Invalid email')
         }
+        else if(!validPassword.test(tempPassword)){
+            setPwErr(true);
+            setMessage('Invalid password')
+        }
+        
     }
 
-    const validate = () => {
-        if (!validEmail.test(tempUser)) {
-           setEmailErr(true);
-        }
-        if (!validPassword.test(tempPassword)) {
-           setPwErr(true);
-        }
-    };
+    // const validate = () => {
+    //     if (!validEmail.test(tempUser)) {
+    //        setEmailErr(true);
+    //     }
+    //     if (!validPassword.test(tempPassword)) {
+    //        setPwErr(true);
+    //     }
+    // };
 
     // const userWarning = (error) =>{
     //     return true
