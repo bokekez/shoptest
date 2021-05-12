@@ -17,16 +17,20 @@ const Register = () => {
     // let userError = false;
     const validEmail = RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
     const validPassword = RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
+    const reg = /^[0-9.\b]+$/;
 
     const changeEmail = (e) => {
+        e.preventDefault();
          setTempEmail(e.target.value)
     }
 
     const changePassword = (e) => {
+        e.preventDefault();
         setTempPassword(e.target.value)
     }
 
     const changeUser = (e) => {
+        e.preventDefault();
         if(e.target.value.length == 10){
             setuserError(true)
             setTempUser(e.target.value)
@@ -52,7 +56,11 @@ const Register = () => {
         // history.push('/');
         // setLoggedIn(true)
         // validate();
-        if (validEmail.test(tempEmail) && validPassword.test(tempPassword)) {
+        if(tempUser.length <4)
+        {
+            setMessage('username must contain at least 4 characters')
+        }
+        if (validEmail.test(tempEmail) && validPassword.test(tempPassword) && tempUser.length >= 4) {
             fetch('https://shoptest-42.herokuapp.com/register', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
@@ -81,35 +89,24 @@ const Register = () => {
             .catch(setMessage('unable to register'))
         } else if(!validEmail.test(tempEmail)){
             setEmailErr(true);
-            setMessage('Invalid email')
+            setMessage('incorect email')
         }
         else if(!validPassword.test(tempPassword)){
-            setPwErr(true);
-            setMessage('Invalid password')
+            if(tempPassword.length < 6){
+                setPwErr(true);
+                setMessage('password must contain six characters')
+            }
+            if(!reg.test(tempPassword)){
+                setPwErr(true);
+                setMessage('password must contain a number')
+            }
         }
-        
     }
 
-    // const validate = () => {
-    //     if (!validEmail.test(tempUser)) {
-    //        setEmailErr(true);
-    //     }
-    //     if (!validPassword.test(tempPassword)) {
-    //        setPwErr(true);
-    //     }
-    // };
-
-    // const userWarning = (error) =>{
-    //     return true
-    // }
-    console.log(tempUser)
-    console.log(' 12', userError)
-
     return(
-        <div className='login'>
+        <div className='register'>
             
             <form className='loginForm' onSubmit={handleSubmit}>
-                <p className='warning'>{message}</p>
                 {userError === true ?
                 <>
                 {/* <label>Set username</label> */}
@@ -124,7 +121,9 @@ const Register = () => {
                 <label>Set a password</label>
                 <input type='password' onChange={changePassword} value={tempPassword}></input>
                 <button className='buttonRegister' onClick={handleSubmit}>Create</button> 
+                <p className='warning'>{message}</p>
             </form>
+            
         </div>
     )
 

@@ -1,3 +1,13 @@
 .warning{
     color: red;
+    /* position: absolute;
+    margin-left: 20rem; */
+    font-weight: bold;
+}
+
+.register{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
