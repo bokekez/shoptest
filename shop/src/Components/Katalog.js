@@ -25,7 +25,8 @@ const Katalog = () => {
                 'price': member.price,
                 'username': member.username,
                 'sales': member.sales,
-                'picture': btoa(member.picture)
+                // 'picture': member.picture
+                'picture': Buffer.from(member.picture.data, 'base64').toString('utf8')
             }));
             setItems([...items, ...tempItems]);
             setLoaded(true);
@@ -42,7 +43,7 @@ const Katalog = () => {
         return(
         <Link key={comp.id} className='karticeChild' to={`/item/${comp.id}`} >
         <div onClick={() => idPass(comp.id)} >
-            <img src={`data:image/jpeg;base64,${comp.picture}`}></img>
+            <img src={`data:image/jpeg;base64, ${comp.picture}`}></img>
             {/* <img src={comp.picture}></img> */}
             <p className='karta'>{comp.item}</p>
             <p className='karta'>{comp.price}</p>

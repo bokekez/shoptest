@@ -37,7 +37,7 @@ const Profile = () => {
     console.log(decErr)
 
     const fileSelect = (e) =>{
-        setFile(e.target.files[0]);
+        setFile(btoa(e.target.files[0]));
     }
 
     console.log(file)
