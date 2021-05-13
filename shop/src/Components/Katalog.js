@@ -11,21 +11,29 @@ const Katalog = () => {
         if(loaded === false){
         fetch('https://shoptest-42.herokuapp.com/', {
             method: 'get',
-            headers: {'Content-Type': 'application/json'},
-        }).then(response => response.json())
+            headers: {'Content-Type': 'application/json, charset=UTF-8',
+                     'Accept': 'application/json, text/html',
+                     },
+            // body: JSON.stringify()
+        })
+          .then(response => response.json())
           .then(response => {   
+            // let base64String = btoa(String.fromCharCode(...new Uint8Array(member.picture)));
             const tempItems = response.map(member => ({
                 'id': member.id,
                 'item': member.item,
                 'price': member.price,
                 'username': member.username,
-                'sales': member.sales
+                'sales': member.sales,
+                'picture': btoa(member.picture)
             }));
             setItems([...items, ...tempItems]);
             setLoaded(true);
             })
         }
     }, [loaded])
+
+    console.log(items)
 
     const idPass = (id) =>{
         setItemId(id);
@@ -34,6 +42,8 @@ const Katalog = () => {
         return(
         <Link key={comp.id} className='karticeChild' to={`/item/${comp.id}`} >
         <div onClick={() => idPass(comp.id)} >
+            <img src={`data:image/jpeg;base64,${comp.picture}`}></img>
+            {/* <img src={comp.picture}></img> */}
             <p className='karta'>{comp.item}</p>
             <p className='karta'>{comp.price}</p>
             <p className='kartUser'>{comp.username}</p>

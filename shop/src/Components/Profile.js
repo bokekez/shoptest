@@ -8,6 +8,7 @@ const Profile = () => {
     const [tempPrice, setTempPrice] = useState();
     const [info, setInfo] = useState('');
     const [decErr, setDecErr] = useState(false);
+    const [file, setFile] = useState();
     let countDecimals = function (value) {
         if(Math.floor(value) === value) return 0;
         return value.toString().split(".")[1].length || 0;
@@ -35,6 +36,12 @@ const Profile = () => {
     
     console.log(decErr)
 
+    const fileSelect = (e) =>{
+        setFile(e.target.files[0]);
+    }
+
+    console.log(file)
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // if(tempItem !== ''){
@@ -50,17 +57,19 @@ const Profile = () => {
         //     setTempPrice('');
         // }
         // validate();
-        // if(validate){
-            const tempName = user.username;
-            if(tempItem !== ''){
-                fetch('https://shoptest-42.herokuapp.com/profile', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    item: tempItem,
-                    price: tempPrice,
-                    username: tempName,
-                    sales: 0
+
+
+        const tempName = user.username;
+        if(tempItem !== ''){
+            fetch('https://shoptest-42.herokuapp.com/profile', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                item: tempItem,
+                price: tempPrice,
+                username: tempName,
+                sales: 0, 
+                picture: file
                 })
             })
             .then(resopnse => resopnse.json())
@@ -91,6 +100,7 @@ const Profile = () => {
                 <input onChange={changeItem} value={tempItem}></input>
                 <label>Set a price</label>
                 <input onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
+                <input type="file" onChange={fileSelect}></input>
                 <button className='buttonRegister' onClick={handleSubmit}>Create</button>
                 { info !== '' ?
                 <p>{info} has been created</p>
