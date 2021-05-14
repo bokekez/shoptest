@@ -56,6 +56,7 @@ const Item = () => {
                 <h3>
                 {selectedItem[0].price}
                 </h3>
+                <img className='itemImg'src={selectedItem[0].picture}></img>
                 <h3>
                 {selectedItem[0].username}
                 </h3>

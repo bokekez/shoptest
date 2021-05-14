@@ -14,3 +14,9 @@
     background-color: rgba(191, 233, 250, 0.815);
     cursor: pointer;
 }
+
+.itemImg{
+  width: 20rem;
+  height: 15rem;
+  border-radius: 10px;
+}
