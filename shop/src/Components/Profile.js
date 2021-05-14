@@ -9,6 +9,7 @@ const Profile = () => {
     const [info, setInfo] = useState('');
     const [decErr, setDecErr] = useState(false);
     const [file, setFile] = useState();
+    const [fileString, setFileString] = useState("");
     let countDecimals = function (value) {
         if(Math.floor(value) === value) return 0;
         return value.toString().split(".")[1].length || 0;
@@ -37,9 +38,27 @@ const Profile = () => {
     console.log(decErr)
 
     const fileSelect = (e) =>{
-        setFile(btoa(e.target.files[0]));
+        setFile(e.target.files[0]);
     }
 
+    console.log('2', file)
+
+    const encode = (file) => {
+        let reader = new FileReader();
+        if(file){
+            reader.readAsDataURL(file);
+            reader.onload = () =>{
+                let Base64 = reader.result;
+                setFileString(Base64)
+                console.log('1', fileString)
+            }
+            reader.onerror = (error) =>{
+
+            }
+        }
+    }
+
+    console.log(fileString)
     console.log(file)
 
     const handleSubmit = (e) => {
@@ -58,8 +77,9 @@ const Profile = () => {
         // }
         // validate();
 
-
+        encode(file);
         const tempName = user.username;
+        const tempString = fileString;
         if(tempItem !== ''){
             fetch('https://shoptest-42.herokuapp.com/profile', {
             method: 'post',
@@ -69,7 +89,7 @@ const Profile = () => {
                 price: tempPrice,
                 username: tempName,
                 sales: 0, 
-                picture: file
+                picture: tempString
                 })
             })
             .then(resopnse => resopnse.json())

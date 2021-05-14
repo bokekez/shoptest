@@ -18,6 +18,7 @@ const Katalog = () => {
         })
           .then(response => response.json())
           .then(response => {   
+            const reader = new FileReader();
             // let base64String = btoa(String.fromCharCode(...new Uint8Array(member.picture)));
             const tempItems = response.map(member => ({
                 'id': member.id,
@@ -26,7 +27,7 @@ const Katalog = () => {
                 'username': member.username,
                 'sales': member.sales,
                 // 'picture': member.picture
-                'picture': Buffer.from(member.picture.data, 'base64').toString('utf8')
+                'picture': Buffer.from(member.picture, 'base64').toString('utf8')
             }));
             setItems([...items, ...tempItems]);
             setLoaded(true);
