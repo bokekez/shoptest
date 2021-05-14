@@ -58,8 +58,8 @@ const Profile = () => {
         }
     }
 
-    console.log(fileString)
-    console.log(file)
+    console.log('4', fileString)
+    console.log('3', file)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -79,7 +79,7 @@ const Profile = () => {
 
         encode(file);
         const tempName = user.username;
-        const tempString = fileString;
+        // const tempString = fileString;
         if(tempItem !== ''){
             fetch('https://shoptest-42.herokuapp.com/profile', {
             method: 'post',
@@ -89,7 +89,7 @@ const Profile = () => {
                 price: tempPrice,
                 username: tempName,
                 sales: 0, 
-                picture: tempString
+                picture: fileString
                 })
             })
             .then(resopnse => resopnse.json())

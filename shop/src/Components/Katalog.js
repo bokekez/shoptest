@@ -18,7 +18,17 @@ const Katalog = () => {
         })
           .then(response => response.json())
           .then(response => {   
-            const reader = new FileReader();
+            //const reader = new FileReader();
+            const decode = (picture) =>{
+                console.log(picture)
+                return decodeURIComponent(
+                    atob(picture).split("").map((c) => {
+                        return "%" + ("00" + c.charCodeAt(0).toString(16).slice(-2));
+                    })
+                    .join("")
+                )
+            }
+            //const decodeBase64 = decode(picture.substring(picture.indexOf(",") +1))
             // let base64String = btoa(String.fromCharCode(...new Uint8Array(member.picture)));
             const tempItems = response.map(member => ({
                 'id': member.id,
@@ -26,8 +36,8 @@ const Katalog = () => {
                 'price': member.price,
                 'username': member.username,
                 'sales': member.sales,
-                // 'picture': member.picture
-                'picture': Buffer.from(member.picture, 'base64').toString('utf8')
+                'picture': decode(JSON.stringify(member.picture))
+                // 'picture': Buffer.from(member.picture, 'base64').toString('utf8')
             }));
             setItems([...items, ...tempItems]);
             setLoaded(true);
