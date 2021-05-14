@@ -18,25 +18,12 @@ const Katalog = () => {
         })
           .then(response => response.json())
           .then(response => {   
-            //const reader = new FileReader();
-            const decode = (picture) =>{
-                console.log(picture)
-                return decodeURIComponent(
-                    atob(picture).split('').map((c) => {
-                        return "%" + ("00" + c.charCodeAt(0).toString(16).slice(-2));
-                    })
-                    .join('')
-                )
-            }
-            //const decodeBase64 = decode(picture.substring(picture.indexOf(",") +1))
-            // let base64String = btoa(String.fromCharCode(...new Uint8Array(member.picture)));
             const tempItems = response.map(member => ({
                 'id': member.id,
                 'item': member.item,
                 'price': member.price,
                 'username': member.username,
                 'sales': member.sales,
-                //'picture': decode(JSON.stringify(member.picture))
                 'picture': Buffer.from(member.picture, 'base64').toString('utf8')
             }));
             setItems([...items, ...tempItems]);
@@ -54,8 +41,7 @@ const Katalog = () => {
         return(
         <Link key={comp.id} className='karticeChild' to={`/item/${comp.id}`} >
         <div onClick={() => idPass(comp.id)} >
-            {/* <img src={`data:image/jpeg;base64, ${comp.picture}`}></img> */}
-            <img src={comp.picture}></img>
+            <img className='kartImg'src={comp.picture}></img>
             <p className='karta'>{comp.item}</p>
             <p className='karta'>{comp.price}</p>
             <p className='kartUser'>{comp.username}</p>

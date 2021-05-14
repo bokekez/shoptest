@@ -35,10 +35,8 @@ const Profile = () => {
         }
     }
     
-    console.log(decErr)
-
     const fileSelect = (e) =>{
-        setFile(e.target.files[0]);
+        setFile(e.target.files[0]);   
     }
 
     console.log('2', file)
@@ -76,10 +74,8 @@ const Profile = () => {
         //     setTempPrice('');
         // }
         // validate();
-
-        encode(file);
+        //encode(file);
         const tempName = user.username;
-        // const tempString = fileString;
         if(tempItem !== ''){
             fetch('https://shoptest-42.herokuapp.com/profile', {
             method: 'post',
@@ -102,7 +98,6 @@ const Profile = () => {
                     setInfo(tempItem);
                 }
             })
-        // }
         }    
     }
 
@@ -121,7 +116,7 @@ const Profile = () => {
                 <label>Set a price</label>
                 <input onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
                 <input type="file" onChange={fileSelect}></input>
-                <button className='buttonRegister' onClick={handleSubmit}>Create</button>
+                <button className='buttonRegister' onClick={() => handleSubmit(), encode(file)}>Create</button>
                 { info !== '' ?
                 <p>{info} has been created</p>
                 :

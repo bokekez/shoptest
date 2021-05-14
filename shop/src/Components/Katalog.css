@@ -8,8 +8,8 @@
     text-align: center;
     border: rgb(148, 193, 204) 0.5px solid;
     background-color: rgba(191, 233, 250, 0.815);
-    width: 10rem;
-    height: 10rem;
+    width: 14rem;
+    height: 14rem;
     margin-top: 2rem;
     /* margin-bottom: 2rem; */
     padding: 0;
@@ -40,7 +40,14 @@
 .kartUser{
     text-decoration: none;
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 0.8rem;
     border-top: rgb(214, 213, 213) 1px solid;
+}
+
+.kartImg{
+    margin-top: 2rem;
+    width: 6rem;
+    height: 4rem;
+    border-radius: 10px;
 }
  
