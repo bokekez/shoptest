@@ -13,6 +13,8 @@ const Listing = () => {
     const [tempPrice, setTempPrice] = useState();
     const [edditState, setEdditState] = useState({id: 0});
     const [message, setMessage] = useState('');
+    const [file, setFile] = useState();
+    const [fileString, setFileString] = useState("");
     let countDecimals = function (value) {
         if(Math.floor(value) === value) return 0;
         return value.toString().split(".")[1].length || 0;
@@ -44,6 +46,8 @@ const Listing = () => {
         const selectedEdit = selectedItem.filter(item => item.id === id)
         setEdditState(selectedEdit)
         //idPass = selectedEdit.id;
+        setTempItem(selectedEdit[0].item)
+        setTempPrice(selectedEdit[0].price)
         if(edditon === false){
             setEdditon(true);
         }
@@ -87,7 +91,8 @@ const Listing = () => {
                     price: tempPrice,
                     username: tempName,
                     sales: 0,
-                    id: tempId
+                    id: tempId,
+                    picture: fileString
                 })
             })
             .then(resopnse => resopnse.json())
@@ -98,7 +103,7 @@ const Listing = () => {
                     setLoaded(false);
                     setEdditon(false);
                     setItems([]);
-                    setMessage('Item eddited')
+                    setMessage('Item edited')
                 }
             else{
                 setMessage('Failed to edit item')
@@ -113,6 +118,25 @@ const Listing = () => {
         setTempPrice('');
     }
 
+    const fileSelect = (e) =>{
+        setFile(e.target.files[0]);   
+    }
+
+    const encode = (file) => {
+        let reader = new FileReader();
+        if(file){
+            reader.readAsDataURL(file);
+            reader.onload = () =>{
+                let Base64 = reader.result;
+                setFileString(Base64)
+                console.log('1', fileString)
+            }
+            reader.onerror = (error) =>{
+
+            }
+        }
+    }
+
     const componentRender = selectedItem.map(comp => {
         return(
         <div key={comp.id} className='karticeChildList'>
@@ -122,8 +146,10 @@ const Listing = () => {
                     <input className='listInput'onChange={changeItem} value={tempItem} placeholder={edditState[0].item}></input>
                     <label className='listLabel'>edit price</label>
                     <input className='listInput'onChange={changePrice} value={tempPrice} placeholder={edditState[0].price}></input>
+                    <label htmlFor="upload" className='labelEnc'>edit image</label>
+                    <input id="upload" type="file" className='listingsEnc' onChange={fileSelect}></input>
                     <div>
-                    <button className='buttonListing' onClick={handleSubmit}>Update</button>
+                    <button className='buttonListing' onClick={() => handleSubmit(), encode(file)}>Update</button>
                     <button className='buttonListing' onClick={handleCancle}>Cancle</button>
                     </div>
                 </form> 
@@ -138,7 +164,7 @@ const Listing = () => {
                 </div>
             </div>
             }
-            <p className='kartUser'>{comp.username}</p>
+            <p className='listUser'>{comp.username}</p>
         </div>
         )
     })

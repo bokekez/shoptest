@@ -43,6 +43,7 @@
     width: 1rem;
     height: 1rem;
     align-self: center;
+    margin-bottom: 1.2rem;
   }
 
 .kartaIkone1{
@@ -51,14 +52,21 @@
     width: 1rem;
     height: 1rem;
     align-self: center;
+    margin-bottom: 1.2rem;
 }
 
 .formaList{
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 
 .listLabel{
     font-size: 0.8rem;
+}
+
+.listUser{
+    text-decoration: none;
+    text-align: center;
+    border-top: rgb(214, 213, 213) 1px solid;
 }
 
 .buttonListing{
@@ -75,4 +83,19 @@
 .listInput{
     width: 85%;
     
+}
+.labelEnc{
+    width: 85%;
+    cursor: pointer;
+    background-color: rgb(146, 184, 233);
+    border: gray 0.5px solid;
+    border-radius: 2px;
+    display: inline-block;
+    margin-top: 0.2rem;
+    width: 5rem;
+}
+
+.listingsEnc{
+    
+    display: none;
 }
