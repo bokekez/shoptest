@@ -11,6 +11,7 @@ const Profile = () => {
     const [decErr, setDecErr] = useState(false);
     const [file, setFile] = useState();
     const [fileString, setFileString] = useState("");
+    const [message, setMessage] = useState("");
     let countDecimals = function (value) {
         if(Math.floor(value) === value) return 0;
         return value.toString().split(".")[1].length || 0;
@@ -37,7 +38,12 @@ const Profile = () => {
     }
     
     const fileSelect = (e) =>{
-        setFile(e.target.files[0]);   
+        if(e.target.files[0].size >= 10000){
+            setMessage("image too large")
+        }
+        if(e.target.files[0].size < 10000){
+            setFile(e.target.files[0]);   
+        }
     }
 
     console.log('2', file)
@@ -124,6 +130,7 @@ const Profile = () => {
                 :
                 <></>
                 } 
+                {message}
             </form>
             
             :

@@ -127,7 +127,12 @@ const Listing = () => {
     }
 
     const fileSelect = (e) =>{
-        setFile(e.target.files[0]);   
+        if(e.target.files[0].size >= 10000){
+            setMessage("image too large")
+        }
+        if(e.target.files[0].size < 10000){
+            setFile(e.target.files[0]);   
+        }  
     }
 
     const encode = (file) => {
