@@ -7,7 +7,6 @@ import trash from './trash.png'
 
 const Listing = () => {
     const {itemId, setItemId, items, setItems, user, setUser, setLoaded} = useContext(ItemContext);
-    const selectedItem = items.filter(item => (item.username == user.username));
     const [edditon, setEdditon] = useState (false);
     const [tempItem, setTempItem] = useState('');
     const [tempPrice, setTempPrice] = useState();
@@ -15,12 +14,21 @@ const Listing = () => {
     const [message, setMessage] = useState('');
     const [file, setFile] = useState();
     const [fileString, setFileString] = useState("");
+
+    let selectedItem = [];
+
+    if(user.admin === true){
+        selectedItem = items;
+        console.log('eo', user)
+    }else{
+        selectedItem = items.filter(item => (item.username == user.username));
+    }
+
     let countDecimals = function (value) {
         if(Math.floor(value) === value) return 0;
         return value.toString().split(".")[1].length || 0;
     }
 
- 
     const changeItem = (e) => {
         e.preventDefault();
         setTempItem(e.target.value)
