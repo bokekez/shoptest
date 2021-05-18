@@ -14,6 +14,8 @@
     /* margin-bottom: 2rem; */
     padding: 0;
     text-decoration: none;
+    transition: 0.7s;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .kartice{
@@ -49,5 +51,9 @@
     width: 8rem;
     height: 6rem;
     border-radius: 10px;
+}
+
+.karticeChild:hover{
+    transform: scale(1.1)
 }
  
