@@ -1,0 +1,10 @@
+.profileEnc{
+    width: 7rem;
+    height: 1.4rem;
+    cursor: pointer;
+    background-color: rgb(203, 250, 253);
+    border: gray 0.5px solid;
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    text-align: center;
+}

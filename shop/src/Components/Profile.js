@@ -1,6 +1,7 @@
 import { getByDisplayValue } from '@testing-library/dom';
 import React, {useState, useEffect, useContext} from 'react';
 import { ItemContext } from './Context'
+import './Profile.css'
 
 const Profile = () => {
     const {itemId, setItemId, items, setItems, item, setItem, generateId, setGenerateId, user, setUser, loggedIn, loaded, setLoaded} = useContext(ItemContext);
@@ -115,7 +116,8 @@ const Profile = () => {
                 <input onChange={changeItem} value={tempItem}></input>
                 <label>Set a price</label>
                 <input onChange={changePrice} value={tempPrice} placeholder="0.00"></input>
-                <input type="file" onChange={fileSelect}></input>
+                <label htmlFor="upload" className='profileEnc'>upload image</label>
+                <input id="upload" type="file" className='listingsEnc'onChange={fileSelect}></input>
                 <button className='buttonRegister' onClick={() => handleSubmit(), encode(file)}>Create</button>
                 { info !== '' ?
                 <p>{info} has been created</p>
