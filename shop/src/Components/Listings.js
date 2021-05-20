@@ -127,11 +127,12 @@ const Listing = () => {
     }
 
     const fileSelect = (e) =>{
-        if(e.target.files[0].size >= 10000){
+        if(e.target.files[0].size >= 7500){
             setMessage("image too large")
         }
-        if(e.target.files[0].size < 10000){
-            setFile(e.target.files[0]);   
+        if(e.target.files[0].size < 7500){
+            setMessage("dabu"); 
+            setFile(e.target.files[0]);  
         }  
     }
 

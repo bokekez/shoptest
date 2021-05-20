@@ -11,7 +11,8 @@ import Profile from './Components/Profile'
 import React, { useState, useEffect } from 'react';
 import { ItemContext } from './Components/Context';
 import Katalog from './Components/Katalog';
-import Listings from './Components/Listings'
+import Listings from './Components/Listings';
+import Settings from './Components/Settings';
 
 function App() {
   const [itemId, setItemId] = useState(0);
@@ -55,6 +56,9 @@ function App() {
         )}/>
         <Route exact={true} path="/listings" render={() =>(
           <Listings/>
+        )}/>
+        <Route exact={true} path="/settings" render={() =>(
+          <Settings/>
         )}/>
         
       </ItemContext.Provider>

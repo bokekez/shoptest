@@ -27,6 +27,11 @@ const Header = () => {
         history.push(`/listings`);
     }
 
+    const listaSettings = () => {
+        setListOn(false);
+        history.push(`/settings`);
+    }
+
     const logOut = () => {
         setUser('')
         setLoggedIn(false)
@@ -57,6 +62,7 @@ const Header = () => {
                 </button>
                 <button  className='profilList' onClick={listaCreate}>Create listing</button>
                 <button  className='profilList1' onClick={listaListing}>My listings</button>
+                <button  className='profilList1' onClick={listaSettings}>Settings</button>
                 <button  className='profilList1' onClick={logOut}>Logout</button>
             </Link>
             }      
