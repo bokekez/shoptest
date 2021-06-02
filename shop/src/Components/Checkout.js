@@ -53,10 +53,10 @@ const Checkout = () => {
 
     return(
         <div className='checkout'>
-            <div>
-            <h2>Total:</h2>
-            <h3>{Number(total).toFixed(2)}</h3>
-            {componentRender}
+            <h2 className='checkoutTotal'>Total:</h2>
+            <h3 className='checkoutTotal'>{Number(total).toFixed(2)}</h3>
+            <div className='checkoutKartice'>
+                {componentRender}
             </div>
         </div>
     )

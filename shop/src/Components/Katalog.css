@@ -56,4 +56,9 @@
 .karticeChild:hover{
     transform: scale(1.1)
 }
- 
+/* 
+.karticeChild:hover .kartImg{
+    transform: scale(1.1);
+    transition: 0.7s;
+    overflow: hidden;
+} */

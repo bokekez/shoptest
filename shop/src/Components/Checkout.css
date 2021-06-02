@@ -2,12 +2,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    align-content: center;
+    flex-direction: column;
     margin-top: 7rem;
     margin-bottom: 10rem;
   }
 
-  .trash{
+  .checkoutKartice{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 14%;
+    margin-right: 14%;
+  }
+
+.checkoutTotal{
+  align-self: center;
+}
+
+.trash{
     /* margin-left: 7vh; */
     cursor: pointer;
     width: 1rem;
@@ -15,7 +28,7 @@
     align-self: center;
     /* top:0.1rem; */
     /* left: 0.5rem; */
-  }
+}
 
 .karticaCheckout{
       display: flex;
